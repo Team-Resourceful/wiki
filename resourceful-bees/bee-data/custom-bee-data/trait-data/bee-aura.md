@@ -215,7 +215,7 @@ The Aura Type determines the effect that the aura has on the player. It is a req
 
 ### <mark style="color:orange;">`damageEffect`</mark>
 
-Used when the aura type is `DAMAGING` The damage source and strength values are defined in the damage effect.
+Used when the aura type is `DAMAGING` The damage source and strength values are defined in the [DamageEffect](damage-effect.md "mention").
 
 ***
 
@@ -254,7 +254,7 @@ Used when the aura type is `DAMAGING` The damage source and strength values are 
 
 ### <mark style="color:orange;">`potionEffect`</mark>
 
-The number of mutations that can be performed before the bee needs to visit a hive to reset the counter.
+Used when the aura type is `POTION` The effect and strength values are defined in the [PotionEffect](potion-effect.md "mention").
 
 ***
 
@@ -292,11 +292,7 @@ The number of mutations that can be performed before the bee needs to visit a hi
 
 ### <mark style="color:orange;">`modifier`</mark>
 
-for HEALING, EXPERIENCE, EXPERIENCE\_DRAIN aura types.&#x20;
-
-
-
-The number of mutations that can be performed before the bee needs to visit a hive to reset the counter.
+The modifier value is used with the `HEALING`, `EXPERIENCE`, and `EXPERIENCE\_DRAIN` aura types. When used with `HEALING`, the value equals the amount healed. When used with `EXPERIENCE`, the value equals the amount of experience received. When used with `EXPERIENCE\_DRAIN`, the value equals the amount of experience taken.
 
 ***
 
@@ -321,7 +317,7 @@ The number of mutations that can be performed before the bee needs to visit a hi
   "auras": [
     {
       "aura": "BURNING",
-      "modifier" 3
+      "modifier": 3
     }
   ]
 }
@@ -356,7 +352,7 @@ The number of mutations that can be performed before the bee needs to visit a hi
   "auras": [
     {
       "aura": "BURNING",
-      "calmingDisabled" true
+      "calmingDisabled": true
     }
   ]
 }

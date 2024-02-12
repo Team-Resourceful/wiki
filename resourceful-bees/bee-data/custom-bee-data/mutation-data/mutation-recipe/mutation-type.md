@@ -100,7 +100,7 @@ The chance of actually resulting the item when selected as the output from the p
   "type": "item",
   "item": {
     "id": "minecraft:nether_star"
-  }
+  },
   "chance": 0.5
 }
 ```
@@ -167,7 +167,7 @@ To calculate the chance:
   "type": "item",
   "item": {
     "id": "minecraft:nether_star"
-  }
+  },
   "weight": 69
 }
 ```
@@ -234,7 +234,7 @@ The chance of actually resulting the block, if selected as the output from the p
   "type": "block",
   "block": {
     "id": "minecraft:diamond_block"
-  }
+  },
   "chance": 0.5
 }
 ```
@@ -301,7 +301,7 @@ To calculate the chance:
   "type": "block",
   "block": {
     "id": "minecraft:diamond_block"
-  }
+  },
   "weight": 69
 }
 ```
@@ -368,7 +368,7 @@ The chance of actually resulting the fluid, if selected as the output from the p
   "type": "fluid",
   "fluid": {
     "id": "minecraft:water"
-  }
+  },
   "chance": 0.5
 }
 ```
@@ -435,7 +435,7 @@ To calculate the chance:
   "type": "fluid",
   "fluid": {
     "id": "minecraft:water"
-  }
+  },
   "weight": 69
 }
 ```
@@ -502,7 +502,7 @@ The chance of actually resulting the entity, if selected as the output from the 
   "type": "entity",
   "entity": {
     "id": "minecraft:cow"
-  }
+  },
   "chance": 0.5
 }
 ```
@@ -569,7 +569,7 @@ To calculate the chance:
   "type": "entity",
   "entity": {
     "id": "minecraft:cow"
-  }
+  },
   "weight": 69
 }
 ```

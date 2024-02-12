@@ -101,7 +101,7 @@ The identifier of the honeycomb variation produced by the bee. More information 
 
 ### <mark style="color:orange;">`flower`</mark>
 
-Specifies what flower(s) the bee can pollinate. With the use of [HolderSet](https://app.gitbook.com/s/uHMOruowjctiLyjG3esg/), the syntax will vary based on the definition. The flower can be defined as a tag, a list of blocks, or a single block. See the examples below for further understanding.
+Specifies what flower(s) the bee can pollinate. With the use of [HolderSet](https://app.gitbook.com/s/uHMOruowjctiLyjG3esg/ "mention"), the syntax will vary based on the definition. The flower can be defined as a tag, a list of blocks, or a single block. See the examples below for further understanding.
 
 ***
 

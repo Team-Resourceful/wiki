@@ -14,7 +14,7 @@ layout:
 
 # Custom Bee Data
 
-Custom Bee Data is the main JSON object and is comprised of several customization objects which are defined using a `"key": { value }` syntax.&#x20;
+Custom Bee Data is the main JSON object comprised of several customization objects which are defined using a `"key": { value }` syntax.&#x20;
 
 ```json
 {
