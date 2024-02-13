@@ -43,8 +43,6 @@ The core customization component is responsible for defining **four** key aspect
 }
 </code></pre>
 
-
-
 ## Identifier
 
 ***
@@ -63,15 +61,13 @@ The identifier of the component is as such:
 resourcefulbees:core/v1
 ```
 
-
-
 ## Customization Options
 
 ***
 
 ### <mark style="color:orange;">`honeycombVariation`</mark>
 
-The identifier of the honeycomb variation produced by the bee. More information about honeycomb variation can be found in the [Honeycomb  Data](https://app.gitbook.com/o/GQdOlzzIqftgC5xMgxnG/s/S5sbJi5FdsoHIzK2cvL5/ "mention") section.
+The identifier of the honeycomb variation produced by the bee. More information about honeycomb variation can be found in the [Custom Honeycombs](https://app.gitbook.com/o/GQdOlzzIqftgC5xMgxnG/s/S5sbJi5FdsoHIzK2cvL5/ "mention") section.
 
 ***
 
@@ -97,11 +93,9 @@ The identifier of the honeycomb variation produced by the bee. More information 
 
 </details>
 
-
-
 ### <mark style="color:orange;">`flower`</mark>
 
-Specifies what flower(s) the bee can pollinate. With the use of [HolderSet](https://app.gitbook.com/s/uHMOruowjctiLyjG3esg/ "mention"), the syntax will vary based on the definition. The flower can be defined as a tag, a list of blocks, or a single block. See the examples below for further understanding.
+Specifies what flower(s) the bee can pollinate. With the use of [Miscellaneous Data](https://app.gitbook.com/o/GQdOlzzIqftgC5xMgxnG/s/uHMOruowjctiLyjG3esg/ "mention"), the syntax will vary based on the definition. The flower can be defined as a tag, a list of blocks, or a single block. See the examples below for further understanding.
 
 ***
 
@@ -143,8 +137,6 @@ Specifies what flower(s) the bee can pollinate. With the use of [HolderSet](http
 ```
 {% endtab %}
 {% endtabs %}
-
-
 
 ### <mark style="color:orange;">`entityFlower`</mark>
 
@@ -191,8 +183,6 @@ When the flower a bee can pollinate is an entity, <mark style="color:orange;">`e
 {% endtab %}
 {% endtabs %}
 
-
-
 ### <mark style="color:orange;">`maxTimeInHive`</mark>
 
 The base amount of time a bee spends in a hive. This value is modified based on the hive tier.
@@ -222,8 +212,6 @@ The base amount of time a bee spends in a hive. This value is modified based on 
 ```
 
 </details>
-
-
 
 ### <mark style="color:orange;">`lore`</mark>
 

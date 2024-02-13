@@ -18,27 +18,27 @@ layout:
 
 <summary>Resourceful Bees provides a set number of predefined Auras (with customizable values) out of the box:</summary>
 
-#### <mark style="color:orange;">Burning</mark>
+<mark style="color:orange;">**Burning**</mark>
 
 Players within the aura's range are set on fire.
 
-#### <mark style="color:orange;">Potion</mark>
+<mark style="color:orange;">**Potion**</mark>
 
 Players within the aura's range have a potion effect applied to them.
 
-#### <mark style="color:orange;">Healing</mark>
+<mark style="color:orange;">**Healing**</mark>
 
 Players within the aura's range are healed an amount equal to the modifier value.
 
-#### <mark style="color:orange;">Damaging</mark>
+<mark style="color:orange;">**Damaging**</mark>
 
 Players within the aura's range are damaged using a defined damage source and strength.
 
-#### <mark style="color:orange;">Experience</mark>
+<mark style="color:orange;">**Experience**</mark>
 
 Players within the aura's range are given experience equal to the modifier value.
 
-#### <mark style="color:orange;">Experience Drain</mark>
+<mark style="color:orange;">**Experience Drain**</mark>
 
 Players within the aura's range are drained of experience equal to the modifier value.
 
@@ -66,8 +66,6 @@ Players within the aura's range are drained of experience equal to the modifier 
 }
 ```
 {% endcode %}
-
-
 
 ## Customization Options
 
@@ -215,7 +213,7 @@ The Aura Type determines the effect that the aura has on the player. It is a req
 
 ### <mark style="color:orange;">`damageEffect`</mark>
 
-Used when the aura type is `DAMAGING` The damage source and strength values are defined in the [DamageEffect](damage-effect.md "mention").
+Used when the aura type is `DAMAGING` The damage source and strength values are defined in the [damage-effect.md](damage-effect.md "mention").
 
 ***
 
@@ -254,7 +252,7 @@ Used when the aura type is `DAMAGING` The damage source and strength values are 
 
 ### <mark style="color:orange;">`potionEffect`</mark>
 
-Used when the aura type is `POTION` The effect and strength values are defined in the [PotionEffect](potion-effect.md "mention").
+Used when the aura type is `POTION` The effect and strength values are defined in the [potion-effect.md](potion-effect.md "mention").
 
 ***
 
@@ -292,7 +290,21 @@ Used when the aura type is `POTION` The effect and strength values are defined i
 
 ### <mark style="color:orange;">`modifier`</mark>
 
-The modifier value is used with the `HEALING`, `EXPERIENCE`, and `EXPERIENCE\_DRAIN` aura types. When used with `HEALING`, the value equals the amount healed. When used with `EXPERIENCE`, the value equals the amount of experience received. When used with `EXPERIENCE\_DRAIN`, the value equals the amount of experience taken.
+The modifier value is used with the `HEALING`, `EXPERIENCE`, and `EXPERIENCE_DRAIN` aura types.&#x20;
+
+{% tabs %}
+{% tab title="HEALING" %}
+When used with the `HEALING` aura type, the value equals the amount healed.
+{% endtab %}
+
+{% tab title="EXPERIENCE" %}
+When used with the `EXPERIENCE` aura type, the value equals the amount of experience received.
+{% endtab %}
+
+{% tab title="EXPERIENCE_DRAIN" %}
+When used with the `EXPERIENCE_DRAIN` aura type, the value equals the amount of experience taken.
+{% endtab %}
+{% endtabs %}
 
 ***
 
@@ -329,7 +341,7 @@ The modifier value is used with the `HEALING`, `EXPERIENCE`, and `EXPERIENCE\_DR
 
 ### <mark style="color:orange;">`calmingDisabled`</mark>
 
-The number of mutations that can be performed before the bee needs to visit a hive to reset the counter.
+The aura can be disabled by the "calming" status effect when this value is set to `true`.
 
 ***
 
