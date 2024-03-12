@@ -14,7 +14,44 @@ layout:
 
 # Trade Data
 
-The villager trade customization component is reused across several JSON files within Resourceful Bees. It is responsible for defining the costs and rewards of certain trade items depending on which file it is used in. When used in bee files, the data controls filled bee jar trades. Not including a villager trade customization component prevents the filled bee jar from being added to the pool of trades.
+The villager trade customization component is reused across several JSON files within Resourceful Bees. It is responsible for defining the costs and rewards of certain trade items depending on which file it is used in. Not including a villager trade customization component prevents the associated items from being added to the pool of trades.
+
+Below are the JSON files which can have a villager trade customization component and the trades they create.
+
+{% tabs %}
+{% tab title="Custom Bee" %}
+When the component is used in a custom bee JSON, a filled bee jar will be added to the Level 5 trade pool.
+{% endtab %}
+
+{% tab title="Custom Honeycombs" %}
+When the component is used in a custom honeycomb JSON, the honeycomb and honeycomb block will be added to the Level 3 trade pool.
+{% endtab %}
+
+{% tab title="Custom Honey" %}
+The component can be used in three different sections of a custom honey JSON:
+
+* When used in the honey bottle section, a honey bottle will be added to the Level 3 trade pool.
+* When used in the honey block section, a honey block will be added to the Level 3 trade pool.
+* When used in the honey fluid section, a honey bucket will be added to the Level 3 trade pool.
+{% endtab %}
+{% endtabs %}
+
+{% hint style="warning" %}
+Adding an empty villager trade component will add the trade to the pool using all default values.
+
+{% code title="Example" %}
+```json
+{
+  "resourcefulbees:block/v1": {
+    "color": "rainbow",
+    "honeyBlockItem": "resourcefulbees:rainbow_honey_block",
+    "honeyBlock": "resourcefulbees:rainbow_honey_block",
+    "tradeData": {}
+  }
+}
+```
+{% endcode %}
+{% endhint %}
 
 {% code title="Template:" %}
 ```json
@@ -53,6 +90,20 @@ The identifier of the component is as such:
 
 <pre><code><strong>resourcefulbees:trade/v1
 </strong></code></pre>
+
+{% hint style="danger" %}
+In custom honeycomb and honey JSON's the identifier is `tradeData`:
+
+{% code title="Example" %}
+```json
+{
+  "resourcefulbees:block/v1": {
+    "tradeData": {}    <---- Identifier
+  }
+}
+```
+{% endcode %}
+{% endhint %}
 
 
 
@@ -235,7 +286,7 @@ The max number of trades that can be performed before a restock is needed.&#x20;
 
 ### <mark style="color:orange;">`xp`</mark>
 
-The list of traits given to the bee.
+The XP awarded each trade.
 
 ***
 

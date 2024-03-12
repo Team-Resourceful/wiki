@@ -21,10 +21,12 @@ The core customization component is responsible for defining **four** key aspect
 * associated lore
 * the honeycombs produced, if any
 
-<pre class="language-json" data-title="Template:"><code class="lang-json">"resourcefulbees:core/v1": {
+{% code title="Template:" %}
+```json
+"resourcefulbees:core/v1": {
   "entityFlower": [
-<strong>    "minecraft:cow",
-</strong>    "minecraft:sheep"
+    "minecraft:cow",
+    "minecraft:sheep"
   ],
   "maxTimeInHive": 4000,
   "lore": [
@@ -41,7 +43,8 @@ The core customization component is responsible for defining **four** key aspect
     "minecraft:emerald_block"
   ]
 }
-</code></pre>
+```
+{% endcode %}
 
 ## Identifier
 
@@ -95,7 +98,7 @@ The identifier of the honeycomb variation produced by the bee. More information 
 
 ### <mark style="color:orange;">`flower`</mark>
 
-Specifies what flower(s) the bee can pollinate. With the use of [Miscellaneous Data](https://app.gitbook.com/o/GQdOlzzIqftgC5xMgxnG/s/uHMOruowjctiLyjG3esg/ "mention"), the syntax will vary based on the definition. The flower can be defined as a tag, a list of blocks, or a single block. See the examples below for further understanding.
+Specifies what flower(s) the bee can pollinate. With the use of [Miscellaneous](https://app.gitbook.com/o/GQdOlzzIqftgC5xMgxnG/s/uHMOruowjctiLyjG3esg/ "mention"), the syntax will vary based on the definition. The flower can be defined as a tag, a list of blocks, or a single block. See the examples below for further understanding.
 
 ***
 

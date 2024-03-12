@@ -12,44 +12,149 @@ layout:
     visible: true
 ---
 
-# Custom Bee Data
+# Creating A Custom Bee
 
-Custom Bee Data is the main JSON object comprised of several customization objects which are defined using a `"key": { value }` syntax.&#x20;
+Resourceful Bees more modern, codec-driven API, enables pack developers and players to create custom bees varying in degree of complexity easily. Bee creation can feel overwhelming at first, but luckily for creators, a vast majority of available customization options are optional and most options have some kind of default value available, with vanilla-matching values provided where necessary.&#x20;
 
-```json
-{
-  "resourcefulbees:core/v1": {
-    ...
-  },
-  "resourcefulbees:rendering/v1": {
-    ...
-  },
-  "resourcefulbees:mutation/v1": {
-    ...
-  },
-  "resourcefulbees:breeding/v1": {
-    ...
-  },
-  "resourcefulbees:trade/v1": {
-    ...
-  }
-}
-```
-
-The "key" names act as identifiers under which the data is registered and used and follow the `namespace:path` format. The path generally follows a `type/version` format.
-
-```
-"resourcefulbees:trade/v1"
-```
-
-This syntax allows for the customizable options to evolve over time with minimal upkeep required since data mappers can be written to upgrade older API versions to newer ones.
+{% hint style="info" %}
+When the default value for an available option is desired, it is acceptable to omit the entry from the JSON.&#x20;
+{% endhint %}
 
 
 
-## Key Components
+## Fundamental Overview
 
 ***
 
-Below is a list of the key customization components provided by the mod. Additional components can be created by other mods via our API.
+At the most basic, high-level view, the creation of a custom bee requires a minimal number of key components to come to life. Below we will highlight the absolute bare minimum required to make a bee as well as additional customizations:
 
-<table data-view="cards" data-full-width="false"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-type="files"></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden></th></tr></thead><tbody><tr><td>Core Data</td><td><em>Key Bee Info</em></td><td><a href="custom-bee-data/core-data.md">core-data.md</a></td><td><a href="broken-reference">Broken file</a></td><td><a href=".gitbook/assets/core-data-card.png">core-data-card.png</a></td><td></td></tr><tr><td>Render Data</td><td><em>What it looks like</em></td><td><a href="custom-bee-data/render-data/">render-data</a></td><td></td><td><a href=".gitbook/assets/render-data-card.png">render-data-card.png</a></td><td></td></tr><tr><td>Breed Data</td><td><em>How to breed</em></td><td><a href="custom-bee-data/breed-data/">breed-data</a></td><td></td><td><a href=".gitbook/assets/breed-data-card.png">breed-data-card.png</a></td><td></td></tr><tr><td>Combat Data</td><td><em>Friend or foe?</em></td><td><a href="custom-bee-data/combat-data.md">combat-data.md</a></td><td></td><td><a href=".gitbook/assets/combat-data-card.png">combat-data-card.png</a></td><td></td></tr><tr><td>Mutation Data</td><td><em>Pollination effects</em></td><td><a href="custom-bee-data/mutation-data/">mutation-data</a></td><td></td><td><a href=".gitbook/assets/mutation-data-card.png">mutation-data-card.png</a></td><td></td></tr><tr><td>Trait Data</td><td><em>Uniqueness</em></td><td><a href="https://app.gitbook.com/o/GQdOlzzIqftgC5xMgxnG/s/gnHuwBi9dpB112fYP5nw/">Trait Data</a></td><td></td><td><a href=".gitbook/assets/trait-data-card.png">trait-data-card.png</a></td><td></td></tr><tr><td>Trade Data</td><td><em>Beekeeper trades</em></td><td><a href="custom-bee-data/trade-data.md">trade-data.md</a></td><td></td><td><a href=".gitbook/assets/trade-data-card.png">trade-data-card.png</a></td><td></td></tr></tbody></table>
+
+
+### Minimum Requirements
+
+Simply placing a properly structured JSON file in the right location will create a bee. However, the bee may not have the right appearance, create honeycombs, spawn, breed, etc without some additional context.&#x20;
+
+
+
+### Additional Customizations
+
+In addition to the bee JSON, a player or pack developer may want to provide custom textures, translations, models, animations, traits, mutations, honeys and honeycombs, various recipes, and more:
+
+* Custom textures, models, and animations will all affect the appearance of the bee.
+* Translations make any text associated with the bee display in the proper language.
+* Honeys and honeycombs can be created independently from bees so that more than one bee can utilize a honey or honeycomb.
+* Traits and mutations can also be created independently so as to be reusable.
+* Various supporting recipes can be created for blocks such as the centrifuge, solidifier, flow hive, breeder, etc.
+
+
+
+## File Structure
+
+***
+
+Traits, bees, honeys, and honeycombs are all customized in the `resourcefulbees` config folder. They can also be customized via the datapack data folder as well. The datapack location is useful for supporting mods which may want to add their own custom bees when loaded alongside Resourceful Bees, however the config folder is a better location for pack developers and players due to the caveats associated with how bees, honeys, and combs are registered to the game.&#x20;
+
+<div align="center" data-full-width="false">
+
+<figure><img src=".gitbook/assets/config-folder-structure.png" alt=""><figcaption><p>An example of what the config folder might look like after a first run of the mod.</p></figcaption></figure>
+
+</div>
+
+{% tabs %}
+{% tab title="bee_traits" %}
+The `bee_traits` folder is where all custom traits should go.
+
+`<pack instance>/config/resourcefulbees/bee_traits`
+{% endtab %}
+
+{% tab title="bees" %}
+The `bees` folder is where all custom bees should go.
+
+`<pack instance>/config/resourcefulbees/bees`
+{% endtab %}
+
+{% tab title="honey" %}
+The `honey` folder is where all custom honeys should go.&#x20;
+
+`<pack instance>/config/resourcefulbees/honey`
+{% endtab %}
+
+{% tab title="honeycombs" %}
+The `honeycombs` folder is where all custom honeycombs should go.&#x20;
+
+`<pack instance>/config/resourcefulbees/honeycombs`
+{% endtab %}
+
+{% tab title="resources" %}
+The `resources` folder functions as any normal resource pack `resources` folder would.&#x20;
+
+`<pack instance>/config/resourcefulbees/resources`
+{% endtab %}
+{% endtabs %}
+
+
+
+### Language Files
+
+***
+
+Language files allow text displayed in game to be displayed in various languages. Not providing an entry in a language file will cause names to appear something like this:
+
+`item.resourcefulbees.blaze_honeycomb`
+
+{% hint style="info" %}
+For new mod installs, run the game at least once so all necessary config files and folders can be generated
+{% endhint %}
+
+
+
+### Creating a Language File
+
+***
+
+1. Locate the `resourcefulbees` config folder inside the main config folder.
+2. Before we begin the process of adding a language file we need to verify that specific resource and data pack files have been generated:
+3. Inside the `resourcefulbees` folder there should be another folder labeled `resources`
+4. Open this folder and verify there is a file inside called `pack.mcmeta`
+   1. This file is needed for the loading of the language files.&#x20;
+   2. If you do not see this file then reload the mod/pack to generate it.
+5. Inside the `resources` folder we need to add the following nested folders: `assets/resourcefulbees/lang`
+6.  The structure should appear as the following image:
+
+    ![](.gitbook/assets/lang-file-location.png)
+7. Inside the `lang` folder, creating a file called `en_us.json` will create an English US language file.
+8. You can specify a different language using any one of the language codes found [here](https://minecraft.wiki/w/Language) under the **Available languages** section.
+9.  Every custom bee added should have language entries similar to the Blaze example below:
+
+    ```json
+    {
+       "block.resourcefulbees.blaze_honeycomb_block": "Blaze Honeycomb Block",
+       "item.resourcefulbees.blaze_honeycomb": "Blaze Honeycomb",
+       "item.resourcefulbees.blaze_spawn_egg": "Blaze Bee Spawn Egg",
+       "entity.resourcefulbees.blaze_bee": "Blaze Bee"
+    }
+    ```
+10. You can either restart the game or use F3+T to reload assets and have the language file take effect.
+
+{% hint style="warning" %}
+
+
+You do not need multiple language files. You only need one with new lines added for each custom bee:
+
+```json
+{
+   "block.resourcefulbees.blaze_honeycomb_block": "Blaze Honeycomb Block",
+   "item.resourcefulbees.blaze_honeycomb": "Blaze Honeycomb",
+   "item.resourcefulbees.blaze_spawn_egg": "Blaze Bee Spawn Egg",
+   "entity.resourcefulbees.blaze_bee": "Blaze Bee",
+   "block.resourcefulbees.pig_honeycomb_block": "Pig Honeycomb Block",
+   "item.resourcefulbees.pig_honeycomb": "Pig Honeycomb",
+   "item.resourcefulbees.pig_spawn_egg": "Pig Bee Spawn Egg",
+   "entity.resourcefulbees.pig_bee": "Pig Bee"
+}
+```
+{% endhint %}
+
+
+
+## Custom Bee Caveats

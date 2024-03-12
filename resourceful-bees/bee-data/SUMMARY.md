@@ -1,6 +1,7 @@
 # Table of contents
 
-* [Custom Bee Data](README.md)
+* [Creating A Custom Bee](README.md)
+  * [The Custom Bee JSON](readme/the-custom-bee-json.md)
   * [Core Data](custom-bee-data/core-data.md)
   * [Render Data](custom-bee-data/render-data/README.md)
     * [Layer Data](custom-bee-data/render-data/layer-data.md)

@@ -26,7 +26,7 @@ A mutation can be **one** of **four** different types:
 Item | Block | Fluid | Entity
 ```
 
-The type object is used for defining the Mutation Type, associated data, and the likelihood of obtaining, when used as an output option.&#x20;
+The type object is used for defining the Mutation Type, associated data, and the likelihood of obtaining, when used as an output option.
 
 ***
 
@@ -42,7 +42,7 @@ The type object is used for defining the Mutation Type, associated data, and the
 
 {% tabs %}
 {% tab title="Item" %}
-### <mark style="color:orange;">`item`</mark>
+#### <mark style="color:orange;">`item`</mark>
 
 The item being transformed or resulted.
 
@@ -73,7 +73,7 @@ The item being transformed or resulted.
 
 </details>
 
-### <mark style="color:orange;">`chance`</mark>
+#### <mark style="color:orange;">`chance`</mark>
 
 The chance of actually resulting the item when selected as the output from the pool of items.
 
@@ -107,7 +107,7 @@ The chance of actually resulting the item when selected as the output from the p
 
 </details>
 
-### <mark style="color:orange;">`weight`</mark>
+#### <mark style="color:orange;">`weight`</mark>
 
 How likely the item is to be selected among a pool of items.
 
@@ -176,7 +176,7 @@ To calculate the chance:
 {% endtab %}
 
 {% tab title="Block" %}
-### <mark style="color:orange;">`block`</mark>
+#### <mark style="color:orange;">`block`</mark>
 
 The block being transformed or resulted.
 
@@ -207,7 +207,7 @@ The block being transformed or resulted.
 
 </details>
 
-### <mark style="color:orange;">`chance`</mark>
+#### <mark style="color:orange;">`chance`</mark>
 
 The chance of actually resulting the block, if selected as the output from the pool of blocks.
 
@@ -241,7 +241,7 @@ The chance of actually resulting the block, if selected as the output from the p
 
 </details>
 
-### <mark style="color:orange;">`weight`</mark>
+#### <mark style="color:orange;">`weight`</mark>
 
 How likely the block is to be selected among a pool of blocks.
 
@@ -310,7 +310,7 @@ To calculate the chance:
 {% endtab %}
 
 {% tab title="Fluid" %}
-### <mark style="color:orange;">`fluid`</mark>
+#### <mark style="color:orange;">`fluid`</mark>
 
 The block being transformed or resulted.
 
@@ -341,7 +341,7 @@ The block being transformed or resulted.
 
 </details>
 
-### <mark style="color:orange;">`chance`</mark>
+#### <mark style="color:orange;">`chance`</mark>
 
 The chance of actually resulting the fluid, if selected as the output from the pool of fluids.
 
@@ -375,7 +375,7 @@ The chance of actually resulting the fluid, if selected as the output from the p
 
 </details>
 
-### <mark style="color:orange;">`weight`</mark>
+#### <mark style="color:orange;">`weight`</mark>
 
 How likely the fluid is to be selected among a pool of fluids.
 
@@ -444,7 +444,7 @@ To calculate the chance:
 {% endtab %}
 
 {% tab title="Entity" %}
-### <mark style="color:orange;">`entity`</mark>
+#### <mark style="color:orange;">`entity`</mark>
 
 The block being transformed or resulted.
 
@@ -475,7 +475,7 @@ The block being transformed or resulted.
 
 </details>
 
-### <mark style="color:orange;">`chance`</mark>
+#### <mark style="color:orange;">`chance`</mark>
 
 The chance of actually resulting the entity, if selected as the output from the pool of entities.
 
@@ -509,7 +509,7 @@ The chance of actually resulting the entity, if selected as the output from the 
 
 </details>
 
-### <mark style="color:orange;">`weight`</mark>
+#### <mark style="color:orange;">`weight`</mark>
 
 How likely the entity is to be selected among a pool of entities.
 
@@ -577,4 +577,3 @@ To calculate the chance:
 </details>
 {% endtab %}
 {% endtabs %}
-

@@ -79,7 +79,7 @@ The item/block/fluid/entity being transformed.
 
 **Key:** <mark style="color:orange;">`input`</mark>
 
-**Type:** [MutationType](mutation-type.md)
+**Type:** [MutationType](broken-reference)
 
 **Default:** This value is required or the recipe won't load!
 {% endhint %}
@@ -113,7 +113,7 @@ A list of possible transformation results, which can be an item, block, fluid, o
 
 **Key:** <mark style="color:orange;">`outputs`</mark>
 
-**Type:** [MutationType\[\]](mutation-type.md)
+**Type:** [MutationType\[\]](broken-reference)
 
 **Default:** This value is required or the recipe won't load!
 {% endhint %}
