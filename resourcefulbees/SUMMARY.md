@@ -2,7 +2,7 @@
 
 - [Introduction](README.md)
 - [Common JSON Types](common-types.md)
-- Formats
+- [Formats](formats/README.md)
   - [Bees](formats/bees/index.md)
     - [Core Serializer](formats/bees/core.md)
     - [Combat Serializer](formats/bees/combat.md)
