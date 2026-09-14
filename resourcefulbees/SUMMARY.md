@@ -23,11 +23,16 @@
     - [Auras](formats/traits/auras.md)
 - Recipes
   - [Mutation](recipes/mutation.md)
+    - [Mutation Entries and Types](recipes/mutation-entry.md)
   - [Solidification](recipes/solidification.md)
   - [Hive](recipes/hive.md)
+    - [Hive and Apiary Output Maps](recipes/hive-output-maps.md)
   - [Flow Hive](recipes/flow-hive.md)
   - [Honey Generator](recipes/honey-generator.md)
+  - [Fluid Ingredients and Fluid Stack Templates](recipes/fluid-ingredients.md)
 - Biome Modifiers
+  - [Holder Sets](biome-modifiers/holder-sets.md)
   - [Bee Spawns](biome-modifiers/bee-spawns.md)
+    - [Spawn Predicate](biome-modifiers/spawn-predicate.md)
   - [Bee Nests](biome-modifiers/bee-nests.md)
 - [JSON Schemas and Templates](reference/README.md)
