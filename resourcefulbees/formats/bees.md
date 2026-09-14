@@ -2,7 +2,7 @@
 
 Resourceful Bees bee definitions are flat maps keyed by versioned serializer IDs. The bee identifier itself is supplied externally by the registry/loader rather than by a root `id` property.
 
-The current machine-readable template confirms the built-in sections and their representative defaults, including core hive timing and lore, combat attributes, rendering data, mutation data, breeding, traits, and trades. fileciteturn3file0L2-L7
+The current machine-readable template confirms the built-in sections and their representative defaults, including core hive timing and lore, combat attributes, rendering data, mutation data, breeding, traits, and trades.
 
 ## Built-in serializer sections
 
@@ -16,7 +16,7 @@ The current machine-readable template confirms the built-in sections and their r
 | `resourcefulbees:trait/v1` | Aura range and trait identifiers. |
 | `resourcefulbees:trade/v1` | Trade amount, costs, multiplier, limits, and XP. |
 
-The Draft 2020-12 schema models these known serializer keys while deliberately allowing additional root properties so third-party serializers remain possible. fileciteturn3file1L2-L30
+The Draft 2020-12 schema models these known serializer keys while deliberately allowing additional root properties so third-party serializers remain possible.
 
 ## Important codec behavior
 
@@ -28,4 +28,4 @@ Breeding family entries require `parent1` and `parent2`; the child bee is inject
 
 ## Machine-readable reference
 
-The complete authoring template and JSON Schema live in the [`reference`](../reference/README.md) directory. Use the schema as the authoritative field/type reference and this page for the codec/runtime behavior that JSON Schema cannot express.
+The complete authoring template and JSON Schema live in the [`reference`](../reference/README.md) directory. Use the schema as the authoritative field/type reference and this page for codec/runtime behavior that JSON Schema cannot express.
