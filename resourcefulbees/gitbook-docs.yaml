@@ -1,0 +1,57 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+site:
+  title: Resourceful Bees JSON Reference
+  structure:
+    - type: section
+      key: section-formats
+      title: Formats
+      path: formats
+      default: true
+      children:
+        - type: space
+          key: space-formats
+          title: JSON Formats
+          path: json-formats
+          default: true
+          content:
+            directory: ./formats
+            language: en
+    - type: section
+      key: section-recipes
+      title: Recipes
+      path: recipes
+      children:
+        - type: space
+          key: space-recipes
+          title: Recipe Reference
+          path: recipe-reference
+          default: true
+          content:
+            directory: ./recipes
+            language: en
+    - type: section
+      key: section-biome-modifiers
+      title: Biome Modifiers
+      path: biome-modifiers
+      children:
+        - type: space
+          key: space-biome-modifiers
+          title: Biome Modifier Reference
+          path: biome-modifier-reference
+          default: true
+          content:
+            directory: ./biome-modifiers
+            language: en
+    - type: section
+      key: section-reference
+      title: JSON Schemas and Templates
+      path: reference
+      children:
+        - type: space
+          key: space-reference
+          title: Schemas and Templates
+          path: schemas-and-templates
+          default: true
+          content:
+            directory: ./reference
+            language: en
