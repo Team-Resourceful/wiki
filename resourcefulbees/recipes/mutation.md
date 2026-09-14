@@ -5,7 +5,7 @@ MutationCodec, built-in mutation serializers, and predicate codecs.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:mutation",
   "pollenBaseColor": 12681264,
@@ -51,31 +51,12 @@ MutationCodec, built-in mutation serializers, and predicate codecs.
 
 ## Fields
 
-  -----------------------------------------------------------------------------------------------
-  Field               Type           Required       Default                      Description
-  ------------------- -------------- -------------- ---------------------------- ----------------
-  `type`              string         Yes            `resourcefulbees:mutation`   ---
-
-  `pollenBaseColor`   color          No             `12681264`                   ResourcefulLib
-                                                                                 Color. Accepted
-                                                                                 forms include
-                                                                                 numeric values,
-                                                                                 string
-                                                                                 values/special
-                                                                                 color names, or
-                                                                                 RGBA objects.
-
-  `pollenTopColor`    color          No             `13408304`                   ResourcefulLib
-                                                                                 Color. Accepted
-                                                                                 forms include
-                                                                                 numeric values,
-                                                                                 string
-                                                                                 values/special
-                                                                                 color names, or
-                                                                                 RGBA objects.
-
-  `mutations`         array          Yes            ---                          ---
-  -----------------------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | string | Yes | `resourcefulbees:mutation` | Recipe serializer identifier. |
+| `pollenBaseColor` | color | No | `12681264` | ResourcefulLib Color. Accepts numeric values, strings/special color names, or RGBA objects. |
+| `pollenTopColor` | color | No | `13408304` | ResourcefulLib Color. Accepts numeric values, strings/special color names, or RGBA objects. |
+| `mutations` | array | Yes | — | List of mutation entries. Each entry contains one required `input` mutation and a required list of `outputs`. |
 
 ## Runtime notes
 
