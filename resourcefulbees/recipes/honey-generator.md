@@ -5,7 +5,7 @@ codecs.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:honey_gen",
   "honey": "resourcefulbees:ruby_honey_fluid_source",
@@ -16,12 +16,12 @@ codecs.
 
 ## Fields
 
-  Field              Type              Required   Default                       Description
-  ------------------ ----------------- ---------- ----------------------------- -------------
-  `type`             string            Yes        `resourcefulbees:honey_gen`   ---
-  `honey`            fluidIngredient   Yes        ---                           ---
-  `energyFillRate`   integer           No         `125`                         ---
-  `honeyDrainRate`   integer           No         `5`                           ---
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | string | Yes | `resourcefulbees:honey_gen` | Recipe serializer identifier. |
+| `honey` | fluidIngredient | Yes | — | Fluid ingredient accepted as honey input. |
+| `energyFillRate` | integer | No | `125` | Energy generated per fill operation. Must be non-negative. |
+| `honeyDrainRate` | integer | No | `5` | Honey consumed per drain operation. Must be non-negative. |
 
 ## Runtime notes
 
