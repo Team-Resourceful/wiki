@@ -5,7 +5,7 @@ PlacedFeature.LIST_CODEC, RegistryCodecs, and HolderSetCodec.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:nests",
   "biomes": "#minecraft:is_overworld",
@@ -18,35 +18,11 @@ PlacedFeature.LIST_CODEC, RegistryCodecs, and HolderSetCodec.
 
 ## Fields
 
-  -------------------------------------------------------------------------------------------------
-  Field          Type                     Required       Default                   Description
-  -------------- ------------------------ -------------- ------------------------- ----------------
-  `type`         string                   Yes            `resourcefulbees:nests`   ---
-
-  `biomes`       biomeHolderSet           Yes            ---                       Required biome
-                                                                                   holder set. May
-                                                                                   be a single
-                                                                                   biome ID, biome
-                                                                                   tag, list of
-                                                                                   biome IDs, or
-                                                                                   NeoForge custom
-                                                                                   holder-set
-                                                                                   object.
-
-  `features`     placedFeatureHolderSet   Yes            ---                       Required
-                                                                                   placed-feature
-                                                                                   holder set. May
-                                                                                   be a single
-                                                                                   placed-feature
-                                                                                   ID,
-                                                                                   placed-feature
-                                                                                   tag, list of
-                                                                                   placed-feature
-                                                                                   IDs, or NeoForge
-                                                                                   custom
-                                                                                   holder-set
-                                                                                   object.
-  -------------------------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | string | Yes | `resourcefulbees:nests` | Biome modifier serializer identifier. |
+| `biomes` | biomeHolderSet | Yes | — | Required biome holder set. May be a single biome ID, biome tag, list of biome IDs, or NeoForge custom holder-set object. |
+| `features` | placedFeatureHolderSet | Yes | — | Required placed-feature holder set. May be a single placed-feature ID, placed-feature tag, list of placed-feature IDs, or NeoForge custom holder-set object. |
 
 ## Runtime notes
 

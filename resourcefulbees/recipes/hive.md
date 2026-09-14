@@ -5,7 +5,7 @@ ItemStackTemplate.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:hive",
   "bees": [
@@ -30,12 +30,12 @@ ItemStackTemplate.
 
 ## Fields
 
-  Field           Type              Required   Default                  Description
-  --------------- ----------------- ---------- ------------------------ -------------
-  `type`          string            Yes        `resourcefulbees:hive`   ---
-  `bees`          entityHolderSet   Yes        ---                      ---
-  `hiveCombs`     tierCombMap       No         `{}`                     ---
-  `apiaryCombs`   tierCombMap       No         `{}`                     ---
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | string | Yes | `resourcefulbees:hive` | Recipe serializer identifier. |
+| `bees` | entityHolderSet | Yes | — | Bee/entity holder set matched by the recipe. |
+| `hiveCombs` | tierCombMap | No | `{}` | Per-tier hive comb outputs. |
+| `apiaryCombs` | tierCombMap | No | `{}` | Per-tier apiary comb outputs. |
 
 ## Runtime notes
 

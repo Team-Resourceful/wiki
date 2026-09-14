@@ -5,7 +5,7 @@ HolderSetCodec, and NeoForge FluidStackTemplate.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:flow_hive",
   "bees": [
@@ -22,26 +22,11 @@ HolderSetCodec, and NeoForge FluidStackTemplate.
 
 ## Fields
 
-  ----------------------------------------------------------------------------------------------------------
-  Field          Type                 Required       Default                       Description
-  -------------- -------------------- -------------- ----------------------------- -------------------------
-  `type`         string               Yes            `resourcefulbees:flow_hive`   ---
-
-  `bees`         entityHolderSet      Yes            ---                           Entity holder set
-                                                                                   accepted by
-                                                                                   HolderSetCodec: a #tag, a
-                                                                                   single entity ID, or a
-                                                                                   list of entity IDs.
-
-  `fluid`        fluidStackTemplate   Yes            ---                           NeoForge
-                                                                                   FluidStackTemplate. A
-                                                                                   bare fluid ID is
-                                                                                   shorthand for that fluid
-                                                                                   with
-                                                                                   FluidType.BUCKET_VOLUME
-                                                                                   (1000) and no component
-                                                                                   patch.
-  ----------------------------------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | string | Yes | `resourcefulbees:flow_hive` | Recipe serializer identifier. |
+| `bees` | entityHolderSet | Yes | — | Entity holder set accepted by HolderSetCodec: a `#tag`, a single entity ID, or a list of entity IDs. |
+| `fluid` | fluidStackTemplate | Yes | — | NeoForge FluidStackTemplate. A bare fluid ID is shorthand for that fluid with `FluidType.BUCKET_VOLUME` (`1000`) and no component patch. |
 
 ## Runtime notes
 

@@ -5,7 +5,7 @@ SizedFluidIngredient, and NeoForge FluidIngredient dispatch codecs.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:solidification",
   "fluid": {
@@ -23,21 +23,12 @@ SizedFluidIngredient, and NeoForge FluidIngredient dispatch codecs.
 
 ## Fields
 
-  -----------------------------------------------------------------------------------------------------------
-  Field          Type                   Required       Default                            Description
-  -------------- ---------------------- -------------- ---------------------------------- -------------------
-  `type`         string                 Yes            `resourcefulbees:solidification`   ---
-
-  `fluid`        sizedFluidIngredient   Yes            ---                                ---
-
-  `result`       itemStackTemplate      Yes            ---                                Minecraft
-                                                                                          ItemStackTemplate
-                                                                                          compact string or
-                                                                                          expanded object
-                                                                                          form.
-
-  `time`         integer                No             `200`                              ---
-  -----------------------------------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | string | Yes | `resourcefulbees:solidification` | Recipe serializer identifier. |
+| `fluid` | sizedFluidIngredient | Yes | — | Sized fluid ingredient containing a fluid ingredient and amount. |
+| `result` | itemStackTemplate | Yes | — | Minecraft ItemStackTemplate compact string or expanded object form. |
+| `time` | integer | No | `200` | Processing time. Must be non-negative. |
 
 ## Runtime notes
 
