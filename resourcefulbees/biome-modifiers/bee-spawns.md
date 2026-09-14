@@ -7,7 +7,7 @@ MinMaxBounds.
 
 ## Example
 
-``` json
+```json
 {
   "type": "resourcefulbees:spawns",
   "whitelist": [
@@ -53,40 +53,13 @@ MinMaxBounds.
 
 ## Fields
 
-  -----------------------------------------------------------------------------------
-  Field              Type                Required       Default        Description
-  ------------------ ------------------- -------------- -------------- --------------
-  `type`             enum                Yes            ---            ---
-
-  `whitelist`        array               Yes            ---            Required list
-                                                                       of biome
-                                                                       holder sets.
-                                                                       An empty list
-                                                                       is codec-valid
-                                                                       but matches no
-                                                                       biomes.
-
-  `blacklist`        array               No             `[]`           ---
-
-  `spawn`            spawn               Yes            ---            SpawnerData
-                                                                       requires
-                                                                       minCount \<=
-                                                                       maxCount.
-                                                                       Draft 2020-12
-                                                                       cannot
-                                                                       directly
-                                                                       compare
-                                                                       sibling
-                                                                       numeric
-                                                                       properties, so
-                                                                       that codec
-                                                                       validation is
-                                                                       documented
-                                                                       rather than
-                                                                       enforced here.
-
-  `spawnPredicate`   locationPredicate   No             ---            ---
-  -----------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `type` | enum | Yes | — | One of `resourcefulbees:spawns`, `resourcefulbees:dev_spawns`, or `resourcefulbees:supporter_spawns`. |
+| `whitelist` | array | Yes | — | Required list of biome holder sets. An empty list is codec-valid but matches no biomes. |
+| `blacklist` | array | No | `[]` | Biome holder sets excluded from spawning. |
+| `spawn` | spawn | Yes | — | Flattened weighted SpawnerData. Requires entity `type`, `minCount >= 1`, `maxCount >= 1`, and `weight >= 0`; runtime additionally requires `minCount <= maxCount`. |
+| `spawnPredicate` | locationPredicate | No | — | Optional Minecraft LocationPredicate restricting where the spawn may occur. |
 
 ## Runtime notes
 
