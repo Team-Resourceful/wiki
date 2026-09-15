@@ -2,7 +2,7 @@
 
 Serializer ID: `resourcefulbees:trade/v1`
 
-The trade serializer configures beekeeper trade quantities, optional secondary costs, price scaling, trade limits, and XP.
+The trade serializer configures beekeeper trade quantities, optional secondary costs, reputation-based price discounts, trade limits, and XP.
 
 ## Fields
 
@@ -11,9 +11,11 @@ The trade serializer configures beekeeper trade quantities, optional secondary c
 | `amount` | uniform generator | No | `{ "min": 1, "max": 1 }` | Both `min` and `max` are number providers. |
 | `secondaryItem` | item identifier | No | `minecraft:air` | Registered item ID. |
 | `secondaryItemCost` | uniform generator | No | `{ "min": 1, "max": 4 }` | Both `min` and `max` are number providers. |
-| `priceMultiplier` | number | No | `0.05` | `>= 0` |
+| `reputationDiscount` | float | No | `0.05` | `0.0` through `1.0`, inclusive. |
 | `maxTrades` | integer | No | `8` | `1` through `64` |
 | `xp` | integer | No | `3` | `1` through `64` |
+
+`reputationDiscount` is the vanilla villager-trade reputation discount multiplier. Resourceful Bees uses the vanilla-aligned name directly in trade data.
 
 ## Example
 
@@ -29,7 +31,7 @@ The trade serializer configures beekeeper trade quantities, optional secondary c
       "min": 1,
       "max": 2
     },
-    "priceMultiplier": 0.05,
+    "reputationDiscount": 0.05,
     "maxTrades": 8,
     "xp": 3
   }
@@ -61,4 +63,4 @@ The exact fields of non-constant number-provider objects depend on the registere
 
 ## Serializer-level default caveat
 
-Resourceful Bees also has serializer-level default objects used internally when a whole trade section is absent. Those internal zero-like defaults are separate from the field defaults above. When an explicit `resourcefulbees:trade/v1` object is authored, omitted fields use the codec defaults in this table and explicit `maxTrades`/`xp` values must satisfy the `1..64` ranges.
+Resourceful Bees also has serializer-level default objects used internally when a whole trade section is absent. Those internal zero-like defaults are separate from the field defaults above. When an explicit `resourcefulbees:trade/v1` object is authored, omitted fields use the codec defaults in this table and explicit `reputationDiscount`, `maxTrades`, and `xp` values must satisfy their documented ranges.

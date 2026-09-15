@@ -24,7 +24,7 @@ ItemStackTemplate usage.
         "min": 1,
         "max": 4
       },
-      "priceMultiplier": 0.05,
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }
@@ -33,49 +33,19 @@ ItemStackTemplate usage.
     {
       "identifier": "example",
       "hiveCombs": {
-        "resourcefulbees:t1": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        },
-        "resourcefulbees:t2": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        },
-        "resourcefulbees:t3": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        },
-        "resourcefulbees:t4": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        }
+        "resourcefulbees:t1": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+        "resourcefulbees:t2": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+        "resourcefulbees:t3": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+        "resourcefulbees:t4": {"id": "resourcefulbees:example_honeycomb", "count": 1}
       },
       "apiaryCombs": {
-        "resourcefulbees:t1": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        },
-        "resourcefulbees:t2": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        },
-        "resourcefulbees:t3": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        },
-        "resourcefulbees:t4": {
-          "id": "resourcefulbees:example_honeycomb",
-          "count": 1
-        }
+        "resourcefulbees:t1": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+        "resourcefulbees:t2": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+        "resourcefulbees:t3": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+        "resourcefulbees:t4": {"id": "resourcefulbees:example_honeycomb", "count": 1}
       },
-      "defaultComb": {
-        "id": "resourcefulbees:example_honeycomb",
-        "count": 1
-      },
-      "defaultCombBlock": {
-        "id": "resourcefulbees:example_honeycomb_block",
-        "count": 1
-      }
+      "defaultComb": {"id": "resourcefulbees:example_honeycomb", "count": 1},
+      "defaultCombBlock": {"id": "resourcefulbees:example_honeycomb_block", "count": 1}
     }
   ]
 }

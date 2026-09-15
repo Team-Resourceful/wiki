@@ -14,7 +14,7 @@ JSON reference for Resourceful Bees.
       "amount": { "min": 1, "max": 1 },
       "secondaryItem": "minecraft:air",
       "secondaryItemCost": { "min": 1, "max": 4 },
-      "priceMultiplier": 0.05,
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }
@@ -49,7 +49,7 @@ JSON reference for Resourceful Bees.
       "amount": { "min": 1, "max": 1 },
       "secondaryItem": "minecraft:air",
       "secondaryItemCost": { "min": 1, "max": 4 },
-      "priceMultiplier": 0.05,
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }
@@ -75,7 +75,7 @@ JSON reference for Resourceful Bees.
       "amount": { "min": 1, "max": 1 },
       "secondaryItem": "minecraft:air",
       "secondaryItemCost": { "min": 1, "max": 4 },
-      "priceMultiplier": 0.05,
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }

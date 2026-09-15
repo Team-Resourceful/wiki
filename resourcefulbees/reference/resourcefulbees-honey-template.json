@@ -4,16 +4,10 @@
     "jumpFactor": 0.5,
     "speedFactor": 0.4,
     "tradeData": {
-      "amount": {
-        "min": 1,
-        "max": 1
-      },
+      "amount": {"min": 1, "max": 1},
       "secondaryItem": "minecraft:air",
-      "secondaryItemCost": {
-        "min": 1,
-        "max": 4
-      },
-      "priceMultiplier": 0.05,
+      "secondaryItemCost": {"min": 1, "max": 4},
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }
@@ -45,16 +39,10 @@
       "emptySound": "minecraft:item.bucket.empty"
     },
     "tradeData": {
-      "amount": {
-        "min": 1,
-        "max": 1
-      },
+      "amount": {"min": 1, "max": 1},
       "secondaryItem": "minecraft:air",
-      "secondaryItemCost": {
-        "min": 1,
-        "max": 4
-      },
-      "priceMultiplier": 0.05,
+      "secondaryItemCost": {"min": 1, "max": 4},
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }
@@ -66,27 +54,14 @@
       "saturation": 1.0,
       "canAlwaysEat": false,
       "consumeSeconds": 2.0,
-      "effects": [
-        {
-          "effect": "minecraft:speed",
-          "duration": 300,
-          "strength": 0,
-          "chance": 1.0
-        }
-      ]
+      "effects": [{"effect": "minecraft:speed", "duration": 300, "strength": 0, "chance": 1.0}]
     },
     "rarity": "COMMON",
     "tradeData": {
-      "amount": {
-        "min": 1,
-        "max": 1
-      },
+      "amount": {"min": 1, "max": 1},
       "secondaryItem": "minecraft:air",
-      "secondaryItemCost": {
-        "min": 1,
-        "max": 4
-      },
-      "priceMultiplier": 0.05,
+      "secondaryItemCost": {"min": 1, "max": 4},
+      "reputationDiscount": 0.05,
       "maxTrades": 8,
       "xp": 3
     }

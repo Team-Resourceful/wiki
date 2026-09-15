@@ -30,7 +30,7 @@ These data types can also be provided through datapack/resource-pack mechanisms 
 | `resourcefulbees:mutation/v1` | Mutation count and mutation identifier. |
 | `resourcefulbees:breeding/v1` | Parent families, feed items, feed return item, and breeding delays. |
 | `resourcefulbees:trait/v1` | Aura range and trait identifiers. |
-| `resourcefulbees:trade/v1` | Trade amount, costs, multiplier, limits, and XP. |
+| `resourcefulbees:trade/v1` | Trade amount, costs, reputation discount, limits, and XP. |
 
 The Draft 2020-12 schema models these known serializer keys while deliberately allowing additional root properties so third-party serializers remain possible.
 
