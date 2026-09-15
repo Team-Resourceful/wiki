@@ -18,7 +18,6 @@
     "feedAmount": 1,
     "feedItems": "minecraft:poppy"
   },
-  "optional": "resourcefulbees:bee_jar",
   "outputs": [
     {
       "child": {
