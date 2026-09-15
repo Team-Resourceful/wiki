@@ -20,18 +20,13 @@
       ]
     },
     "whitelist": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/biomeHolderSet"
-      },
-      "description": "Required list of biome holder sets. An empty list is codec-valid but matches no biomes."
+      "$ref": "#/$defs/biomeHolderSet",
+      "description": "Required biome holder set. Accepts a biome tag, a single biome ID, a compact list of biome IDs, or a custom NeoForge holder-set dispatch object."
     },
     "blacklist": {
-      "type": "array",
-      "items": {
-        "$ref": "#/$defs/biomeHolderSet"
-      },
-      "default": []
+      "$ref": "#/$defs/biomeHolderSet",
+      "default": [],
+      "description": "Biome holder set excluded from spawning. The default empty holder set excludes no biomes."
     },
     "spawn": {
       "$ref": "#/$defs/spawn"
@@ -50,7 +45,7 @@
       "pattern": "^#(?:[a-z0-9_.-]+:)?[a-z0-9/._-]+$"
     },
     "registryHolderSet": {
-      "description": "Minecraft/NeoForge HolderSet form with alwaysUseList=false: tag, single registry entry, compact list, or a custom NeoForge holder-set dispatch object.",
+      "description": "Minecraft/NeoForge HolderSet form with alwaysUseList=false: tag, single registry entry, compact list of registry entries, or a custom NeoForge holder-set dispatch object. An array is one holder set containing multiple individual holders, not a list of holder sets.",
       "oneOf": [
         {
           "$ref": "#/$defs/tagIdentifier"

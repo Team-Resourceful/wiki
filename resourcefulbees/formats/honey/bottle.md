@@ -2,7 +2,7 @@
 
 Serializer ID: `resourcefulbees:bottle/v1`
 
-This is the required built-in honey serializer. It controls bottle color, food behavior, rarity, the backing bottle item, and optional trade data.
+This is the required built-in honey serializer. It controls bottle color, food behavior, rarity, and optional trade data. The registered honey bottle item is derived from the honey filename rather than configured by a serializer field.
 
 ## Fields
 
@@ -11,7 +11,6 @@ This is the required built-in honey serializer. It controls bottle color, food b
 | `color` | ResourcefulLib color | No | `#ffffff` | Number, color string/special name, or RGBA object |
 | `food` | food object | No | codec defaults | See below |
 | `rarity` | enum name or ordinal | No | `COMMON` | `COMMON`, `UNCOMMON`, `RARE`, `EPIC` case-insensitively; ordinals `0..3` accepted |
-| `honeyBottle` | item identifier | No | `minecraft:honey_bottle` | Registered item ID |
 | `tradeData` | trade object | No | `TradeData.DEFAULT` | Explicit `{}` uses trade-field defaults |
 
 ## Food object
@@ -53,10 +52,11 @@ This is the required built-in honey serializer. It controls bottle color, food b
         }
       ]
     },
-    "rarity": "COMMON",
-    "honeyBottle": "minecraft:honey_bottle"
+    "rarity": "COMMON"
   }
 }
 ```
+
+The honey identifier and registered bottle item are derived from the filename. There is no bottle-item field in `resourcefulbees:bottle/v1`.
 
 Although the serializer is required, its object may be `{}` because all of its nested fields have defaults.
