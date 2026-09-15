@@ -2,10 +2,24 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.invalid/schemas/resourcefulbees-centrifuge-recipe.schema.json",
   "title": "Resourceful Bees Centrifuge Recipe",
-  "description": "Draft 2020-12 schema reconstructed from CentrifugeRecipe, ItemOutput, FluidOutput, ResourcefulLib WeightedCollection, Minecraft Ingredient and ItemStackTemplate, and NeoForge FluidStackTemplate.",
+  "description": "Draft 2020-12 schema reconstructed from CentrifugeRecipe, ItemOutput, FluidOutput, ResourcefulLib WeightedCollection, Minecraft Ingredient and ItemStackTemplate, and NeoForge FluidStackTemplate. At least one of itemOutputs or fluidOutputs must contain an output roll.",
   "type": "object",
   "additionalProperties": false,
   "required": ["type", "ingredient"],
+  "anyOf": [
+    {
+      "required": ["itemOutputs"],
+      "properties": {
+        "itemOutputs": { "minItems": 1 }
+      }
+    },
+    {
+      "required": ["fluidOutputs"],
+      "properties": {
+        "fluidOutputs": { "minItems": 1 }
+      }
+    }
+  ],
   "properties": {
     "type": { "const": "resourcefulbees:centrifuge" },
     "ingredient": { "$ref": "#/$defs/ingredient" },
@@ -19,13 +33,13 @@
       "type": "array",
       "items": { "$ref": "#/$defs/itemOutputRoll" },
       "default": [],
-      "description": "Item output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored."
+      "description": "Optional item output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored. At least one of itemOutputs or fluidOutputs must be non-empty."
     },
     "fluidOutputs": {
       "type": "array",
       "items": { "$ref": "#/$defs/fluidOutputRoll" },
       "default": [],
-      "description": "Fluid output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored."
+      "description": "Optional fluid output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored. At least one of itemOutputs or fluidOutputs must be non-empty."
     },
     "time": {
       "type": "integer",
