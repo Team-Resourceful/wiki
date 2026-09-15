@@ -6,7 +6,7 @@ ItemStackTemplate usage.
 
 ## Example
 
-``` json
+```json
 {
   "honeycomb": {
     "name": "example",
@@ -83,28 +83,10 @@ ItemStackTemplate usage.
 
 ## Fields
 
-  ---------------------------------------------------------------------------------------
-  Field          Type                    Required       Default        Description
-  -------------- ----------------------- -------------- -------------- ------------------
-  `honeycomb`    honeycombRegistryData   No             ---            Honeycomb
-                                                                       item/block
-                                                                       registration data.
-                                                                       The name field is
-                                                                       read separately by
-                                                                       HoneycombSetup to
-                                                                       override the
-                                                                       filename-derived
-                                                                       honeycomb name;
-                                                                       RegistryData
-                                                                       itself receives
-                                                                       that name as a
-                                                                       codec point.
-
-  `variations`   array                   No             `[]`           Output variations
-                                                                       registered from
-                                                                       this honeycomb
-                                                                       file.
-  ---------------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `honeycomb` | honeycombRegistryData | No | --- | Honeycomb item/block registration data. The name field is read separately by HoneycombSetup to override the filename-derived honeycomb name; RegistryData itself receives that name as a codec point. |
+| `variations` | array | No | `[]` | Output variations registered from this honeycomb file. |
 
 ## Runtime notes
 
@@ -122,8 +104,8 @@ on configuration rather than JSON alone.
 The source files used for this page are included in the `reference/`
 directory:
 
--   `resourcefulbees-honeycomb-template.json`
--   `resourcefulbees-honeycomb.schema.json`
+- `resourcefulbees-honeycomb-template.json`
+- `resourcefulbees-honeycomb.schema.json`
 
 > The schema is the machine-readable reference. Runtime notes document
 > codec or game behavior that JSON Schema cannot fully express.

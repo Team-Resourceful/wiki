@@ -5,7 +5,7 @@ TraitDamageType, DamageEffect, Aura, AuraType, and CodecExtras.set.
 
 ## Example
 
-``` json
+```json
 {
   "name": "fiery",
   "displayItem": "minecraft:blaze_powder",
@@ -55,35 +55,17 @@ TraitDamageType, DamageEffect, Aura, AuraType, and CodecExtras.set.
 
 ## Fields
 
-  ----------------------------------------------------------------------------------------------------
-  Field                   Type           Required       Default                     Description
-  ----------------------- -------------- -------------- --------------------------- ------------------
-  `name`                  string         No             ---                         Optional trait
-                                                                                    name override. If
-                                                                                    omitted, the
-                                                                                    filename-derived
-                                                                                    name is used.
-                                                                                    Runtime lowercases
-                                                                                    the name and
-                                                                                    replaces spaces
-                                                                                    with underscores.
-
-  `displayItem`           identifier     No             `"minecraft:nether_star"`   ---
-
-  `potionDamageEffects`   array          No             `[]`                        ---
-
-  `damageImmunities`      array          No             `[]`                        ---
-
-  `potionImmunities`      array          No             `[]`                        ---
-
-  `damageTypes`           array          No             `[]`                        ---
-
-  `specialAbilities`      array          No             `[]`                        ---
-
-  `particleType`          array          No             `[]`                        ---
-
-  `auras`                 array          No             `[]`                        ---
-  ----------------------------------------------------------------------------------------------------
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `name` | string | No | --- | Optional trait name override. If omitted, the filename-derived name is used. Runtime lowercases the name and replaces spaces with underscores. |
+| `displayItem` | identifier | No | `"minecraft:nether_star"` | --- |
+| `potionDamageEffects` | array | No | `[]` | --- |
+| `damageImmunities` | array | No | `[]` | --- |
+| `potionImmunities` | array | No | `[]` | --- |
+| `damageTypes` | array | No | `[]` | --- |
+| `specialAbilities` | array | No | `[]` | --- |
+| `particleType` | array | No | `[]` | --- |
+| `auras` | array | No | `[]` | --- |
 
 ## Runtime notes
 
@@ -96,8 +78,8 @@ runtime; ordering is not semantically preserved.
 The source files used for this page are included in the `reference/`
 directory:
 
--   `resourcefulbees-trait-template.json`
--   `resourcefulbees-trait.schema.json`
+- `resourcefulbees-trait-template.json`
+- `resourcefulbees-trait.schema.json`
 
 > The schema is the machine-readable reference. Runtime notes document
 > codec or game behavior that JSON Schema cannot fully express.
