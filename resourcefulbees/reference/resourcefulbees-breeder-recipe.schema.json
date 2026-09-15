@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/resourcefulbees-breeder-recipe.schema.json",
+  "title": "Resourceful Bees Breeder Recipe",
+  "description": "Schema for the resourcefulbees:breeder recipe serializer and its Resourceful Bees Bee Jar Ingredient usage.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "parent1", "parent2", "outputs"],
+  "properties": {
+    "type": { "const": "resourcefulbees:breeder" },
+    "parent1": { "$ref": "#/$defs/parentInput" },
+    "parent2": { "$ref": "#/$defs/parentInput" },
+    "optional": {
+      "$ref": "#/$defs/ingredient",
+      "description": "Codec-optional additional-slot ingredient. Current runtime matching requires this ingredient to be present, non-empty, and matched."
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/childOutput" },
+      "description": "Weighted child outputs. The field is codec-required; runtime selection requires at least one usable entry."
+    },
+    "time": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 72000,
+      "default": 2400
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^(?:[a-z0-9_.-]+:)?[a-z0-9/._-]+$"
+    },
+    "itemOrTag": {
+      "type": "string",
+      "pattern": "^#?(?:[a-z0-9_.-]+:)?[a-z0-9/._-]+$"
+    },
+    "beeJarIngredient": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["neoforge:ingredient_type", "id"],
+      "properties": {
+        "neoforge:ingredient_type": { "const": "resourcefulbees:bee_jar" },
+        "id": {
+          "$ref": "#/$defs/identifier",
+          "description": "Entity type required inside the bee jar."
+        }
+      }
+    },
+    "ingredient": {
+      "description": "Minecraft/NeoForge Ingredient.CODEC. Common compact forms and Resourceful Bees' Bee Jar Ingredient are represented; other custom ingredient objects remain extensible.",
+      "anyOf": [
+        { "$ref": "#/$defs/itemOrTag" },
+        {
+          "type": "array",
+          "items": {}
+        },
+        { "$ref": "#/$defs/beeJarIngredient" },
+        {
+          "type": "object",
+          "additionalProperties": true
+        }
+      ]
+    },
+    "dataComponentPatch": {
+      "type": "object",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "itemStackTemplateObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99,
+          "default": 1
+        },
+        "components": { "$ref": "#/$defs/dataComponentPatch" }
+      }
+    },
+    "itemStackTemplate": {
+      "oneOf": [
+        { "$ref": "#/$defs/identifier" },
+        { "$ref": "#/$defs/itemStackTemplateObject" }
+      ]
+    },
+    "parentInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["parent", "feedItems"],
+      "properties": {
+        "parent": { "$ref": "#/$defs/ingredient" },
+        "displayEntity": { "$ref": "#/$defs/identifier" },
+        "feedAmount": {
+          "type": "integer",
+          "default": 1,
+          "description": "Current ParentInput codec uses unrestricted Codec.INT."
+        },
+        "feedItems": { "$ref": "#/$defs/ingredient" },
+        "returnItem": { "$ref": "#/$defs/itemStackTemplate" }
+      }
+    },
+    "childOutput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["child"],
+      "properties": {
+        "child": { "$ref": "#/$defs/itemStackTemplate" },
+        "entity": { "$ref": "#/$defs/identifier" },
+        "weight": {
+          "type": "number",
+          "minimum": 0.0,
+          "default": 10.0,
+          "description": "Codec range is 0.0 through Java Double.MAX_VALUE."
+        },
+        "chance": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 1.0
+        }
+      }
+    }
+  }
+}
