@@ -3,8 +3,6 @@
     "color": "#ffffff",
     "jumpFactor": 0.5,
     "speedFactor": 0.4,
-    "honeyBlockItem": "minecraft:honey_block",
-    "honeyBlock": "minecraft:honey_block",
     "tradeData": {
       "amount": {
         "min": 1,
@@ -78,7 +76,6 @@
       ]
     },
     "rarity": "COMMON",
-    "honeyBottle": "minecraft:honey_bottle",
     "tradeData": {
       "amount": {
         "min": 1,
