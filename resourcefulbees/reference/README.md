@@ -12,6 +12,11 @@ Machine-readable source files used by the generated documentation.
 - [`resourcefulbees-biome-modifier-template.json`](resourcefulbees-biome-modifier-template.json)
 - [`resourcefulbees-biome-modifier.schema.json`](resourcefulbees-biome-modifier.schema.json)
 
+## Centrifuge Recipe
+
+- [`resourcefulbees-centrifuge-recipe-template.json`](resourcefulbees-centrifuge-recipe-template.json)
+- [`resourcefulbees-centrifuge-recipe.schema.json`](resourcefulbees-centrifuge-recipe.schema.json)
+
 ## Flow Hive Recipe
 
 - [`resourcefulbees-flow-hive-recipe-template.json`](resourcefulbees-flow-hive-recipe-template.json)

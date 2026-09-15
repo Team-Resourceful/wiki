@@ -1,0 +1,45 @@
+{
+  "type": "resourcefulbees:centrifuge",
+  "ingredient": "resourcefulbees:example_honeycomb",
+  "inputAmount": 1,
+  "itemOutputs": [
+    {
+      "chance": 0.8,
+      "pool": [
+        {
+          "item": {
+            "id": "minecraft:raw_iron",
+            "count": 3,
+            "components": {}
+          },
+          "weight": 25
+        },
+        {
+          "item": {
+            "id": "minecraft:raw_iron",
+            "count": 1,
+            "components": {}
+          },
+          "weight": 50
+        }
+      ]
+    }
+  ],
+  "fluidOutputs": [
+    {
+      "chance": 1.0,
+      "pool": [
+        {
+          "fluid": {
+            "id": "resourcefulbees:honey_fluid_source",
+            "amount": 100,
+            "components": {}
+          },
+          "weight": 1
+        }
+      ]
+    }
+  ],
+  "time": 200,
+  "energyPerTick": 10
+}

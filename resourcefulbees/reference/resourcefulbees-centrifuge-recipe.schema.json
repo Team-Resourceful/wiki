@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/schemas/resourcefulbees-centrifuge-recipe.schema.json",
+  "title": "Resourceful Bees Centrifuge Recipe",
+  "description": "Draft 2020-12 schema reconstructed from CentrifugeRecipe, ItemOutput, FluidOutput, ResourcefulLib WeightedCollection, Minecraft Ingredient and ItemStackTemplate, and NeoForge FluidStackTemplate.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["type", "ingredient"],
+  "properties": {
+    "type": { "const": "resourcefulbees:centrifuge" },
+    "ingredient": { "$ref": "#/$defs/ingredient" },
+    "inputAmount": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 1,
+      "description": "Exact input stack count required by CentrifugeRecipe.matches and consumed when the recipe completes. Uses ExtraCodecs.POSITIVE_INT."
+    },
+    "itemOutputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/itemOutputRoll" },
+      "default": [],
+      "description": "Item output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored."
+    },
+    "fluidOutputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fluidOutputRoll" },
+      "default": [],
+      "description": "Fluid output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored."
+    },
+    "time": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 200,
+      "description": "Positive processing time using ExtraCodecs.POSITIVE_INT. Defaults from CentrifugeConfig.defaultCentrifugeRecipeTime; 200 is the stock configuration value."
+    },
+    "energyPerTick": {
+      "type": "integer",
+      "minimum": 1,
+      "default": 10,
+      "description": "Positive energy-per-tick value using ExtraCodecs.POSITIVE_INT. Defaults from CentrifugeConfig.centrifugeRfPerTick; 10 is the stock configuration value."
+    },
+    "rotations": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Optional explicit manual-centrifuge rotation count using ExtraCodecs.POSITIVE_INT. When omitted, runtime derives rotations from time."
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "description": "Minecraft/NeoForge resource identifier.",
+      "pattern": "^(?:[a-z0-9_.-]+:)?[a-z0-9/._-]+$"
+    },
+    "itemOrTag": {
+      "type": "string",
+      "description": "Common compact Minecraft Ingredient form: direct item identifier or #item tag.",
+      "pattern": "^#?(?:[a-z0-9_.-]+:)?[a-z0-9/._-]+$"
+    },
+    "ingredient": {
+      "description": "Minecraft Ingredient.CODEC. Common direct item/tag forms are modeled explicitly; lists and custom Minecraft/NeoForge ingredient objects are kept permissive because their full external codecs are outside Resourceful Bees.",
+      "oneOf": [
+        { "$ref": "#/$defs/itemOrTag" },
+        {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              { "$ref": "#/$defs/itemOrTag" },
+              { "type": "object", "additionalProperties": true }
+            ]
+          }
+        },
+        { "type": "object", "additionalProperties": true }
+      ]
+    },
+    "dataComponentPatch": {
+      "type": "object",
+      "description": "Minecraft DataComponentPatch. Component keys are registry-driven and intentionally extensible.",
+      "additionalProperties": true,
+      "default": {}
+    },
+    "itemStackTemplateObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 99,
+          "default": 1
+        },
+        "components": { "$ref": "#/$defs/dataComponentPatch" }
+      }
+    },
+    "itemStackTemplate": {
+      "description": "Minecraft ItemStackTemplate compact string or expanded object form.",
+      "oneOf": [
+        { "$ref": "#/$defs/identifier" },
+        { "$ref": "#/$defs/itemStackTemplateObject" }
+      ]
+    },
+    "nonEmptyFluidIdentifier": {
+      "allOf": [
+        { "$ref": "#/$defs/identifier" },
+        { "not": { "enum": ["minecraft:empty", "empty"] } }
+      ]
+    },
+    "fluidStackTemplateObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "amount"],
+      "properties": {
+        "id": { "$ref": "#/$defs/nonEmptyFluidIdentifier" },
+        "amount": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "components": { "$ref": "#/$defs/dataComponentPatch" }
+      }
+    },
+    "fluidStackTemplate": {
+      "description": "NeoForge FluidStackTemplate. A bare non-empty fluid ID is shorthand for bucket volume with no component patch.",
+      "oneOf": [
+        { "$ref": "#/$defs/nonEmptyFluidIdentifier" },
+        { "$ref": "#/$defs/fluidStackTemplateObject" }
+      ]
+    },
+    "itemPoolEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["item"],
+      "properties": {
+        "item": { "$ref": "#/$defs/itemStackTemplate" },
+        "weight": {
+          "type": "number",
+          "minimum": 1.0,
+          "maximum": 1000.0,
+          "default": 1.0
+        }
+      }
+    },
+    "fluidPoolEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fluid"],
+      "properties": {
+        "fluid": { "$ref": "#/$defs/fluidStackTemplate" },
+        "weight": {
+          "type": "number",
+          "minimum": 1.0,
+          "default": 1.0,
+          "description": "FluidOutput codec accepts values from 1.0 through Java Double.MAX_VALUE."
+        }
+      }
+    },
+    "itemOutputRoll": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chance": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 1.0
+        },
+        "pool": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/itemPoolEntry" },
+          "default": [],
+          "description": "Codec-valid when empty, but runtime selection requires a non-empty pool when this roll succeeds."
+        }
+      }
+    },
+    "fluidOutputRoll": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "chance": {
+          "type": "number",
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "default": 1.0
+        },
+        "pool": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/fluidPoolEntry" },
+          "default": [],
+          "description": "Codec-valid when empty, but runtime selection requires a non-empty pool when this roll succeeds."
+        }
+      }
+    }
+  }
+}

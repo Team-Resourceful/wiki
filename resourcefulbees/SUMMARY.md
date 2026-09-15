@@ -22,6 +22,7 @@
     - [Potion and Damage Entries](formats/traits/effects.md)
     - [Auras](formats/traits/auras.md)
 - Recipes
+  - [Centrifuge](recipes/centrifuge.md)
   - [Mutation](recipes/mutation.md)
     - [Mutation Entries and Types](recipes/mutation-entry.md)
   - [Solidification](recipes/solidification.md)
