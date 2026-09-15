@@ -11,8 +11,9 @@
     "ingredient": { "$ref": "#/$defs/ingredient" },
     "inputAmount": {
       "type": "integer",
+      "minimum": 1,
       "default": 1,
-      "description": "Exact input stack count required by CentrifugeRecipe.matches. The recipe codec itself imposes no numeric range."
+      "description": "Exact input stack count required by CentrifugeRecipe.matches and consumed when the recipe completes. Uses ExtraCodecs.POSITIVE_INT."
     },
     "itemOutputs": {
       "type": "array",
@@ -26,17 +27,20 @@
     },
     "time": {
       "type": "integer",
+      "minimum": 1,
       "default": 200,
-      "description": "Defaults from CentrifugeConfig.defaultCentrifugeRecipeTime; 200 is the stock configuration value. The recipe codec itself imposes no numeric range."
+      "description": "Positive processing time using ExtraCodecs.POSITIVE_INT. Defaults from CentrifugeConfig.defaultCentrifugeRecipeTime; 200 is the stock configuration value."
     },
     "energyPerTick": {
       "type": "integer",
+      "minimum": 1,
       "default": 10,
-      "description": "Defaults from CentrifugeConfig.centrifugeRfPerTick; 10 is the stock configuration value. The recipe codec itself imposes no numeric range."
+      "description": "Positive energy-per-tick value using ExtraCodecs.POSITIVE_INT. Defaults from CentrifugeConfig.centrifugeRfPerTick; 10 is the stock configuration value."
     },
     "rotations": {
       "type": "integer",
-      "description": "Optional explicit manual-centrifuge rotation count. When omitted, runtime derives rotations from time."
+      "minimum": 1,
+      "description": "Optional explicit manual-centrifuge rotation count using ExtraCodecs.POSITIVE_INT. When omitted, runtime derives rotations from time."
     }
   },
   "$defs": {
