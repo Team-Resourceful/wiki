@@ -10,8 +10,6 @@ JSON reference for Resourceful Bees.
     "color": "#ffffff",
     "jumpFactor": 0.5,
     "speedFactor": 0.4,
-    "honeyBlockItem": "minecraft:honey_block",
-    "honeyBlock": "minecraft:honey_block",
     "tradeData": {
       "amount": { "min": 1, "max": 1 },
       "secondaryItem": "minecraft:air",
@@ -73,7 +71,6 @@ JSON reference for Resourceful Bees.
       ]
     },
     "rarity": "COMMON",
-    "honeyBottle": "minecraft:honey_bottle",
     "tradeData": {
       "amount": { "min": 1, "max": 1 },
       "secondaryItem": "minecraft:air",
@@ -98,7 +95,10 @@ JSON reference for Resourceful Bees.
 
 Honey data is a flat serializer map. `resourcefulbees:bottle/v1` is
 required; the block and fluid serializers are optional. The honey name
-is derived from the filename rather than a JSON `name` property.
+and registered honey content are derived from the filename rather than
+root or serializer-level item/block identifier fields. In particular,
+the bottle item and the honey block/block item do not need to be named
+in JSON.
 
 An explicit empty rendering object is not valid because
 `rendering.color` is required when the rendering object is present.
