@@ -52,12 +52,12 @@ Schema reconstructed from `CentrifugeRecipe`, its item/fluid output codecs, Reso
 | --- | --- | --- | --- | --- |
 | `type` | string | Yes | `resourcefulbees:centrifuge` | Recipe serializer identifier. |
 | `ingredient` | Minecraft Ingredient | Yes | — | Item ingredient tested against the centrifuge input stack. Simple Resourceful Bees recipes use a direct item ID; Minecraft/NeoForge ingredient objects remain codec-driven. |
-| `inputAmount` | integer | No | `1` | Required stack count for the recipe match. The codec itself applies no numeric range. |
+| `inputAmount` | positive integer | No | `1` | Required stack count for the recipe match and the number of input items consumed when the recipe completes. Must be at least `1`. |
 | `itemOutputs` | array of item output rolls | No | `[]` | Independent item-output rolls. Each roll has a chance and a weighted pool of possible item results. |
 | `fluidOutputs` | array of fluid output rolls | No | `[]` | Independent fluid-output rolls. Each roll has a chance and a weighted pool of possible fluid results. |
-| `time` | integer | No | configured default (`200` initially) | Recipe time. The codec uses `CentrifugeConfig.defaultCentrifugeRecipeTime`; the recipe field itself uses an unrestricted integer codec. |
-| `energyPerTick` | integer | No | configured default (`10` initially) | Energy value from `CentrifugeConfig.centrifugeRfPerTick`. The recipe field itself uses an unrestricted integer codec. |
-| `rotations` | integer | No | derived from `time` | Optional explicit rotation count. If omitted, runtime computes `((time / 20) / 8) * 2` using integer division. |
+| `time` | positive integer | No | configured default (`200` initially) | Recipe processing time. Must be at least `1`; the default comes from `CentrifugeConfig.defaultCentrifugeRecipeTime`. |
+| `energyPerTick` | positive integer | No | configured default (`10` initially) | Energy consumed per processing tick. Must be at least `1`; the default comes from `CentrifugeConfig.centrifugeRfPerTick`. |
+| `rotations` | positive integer | No | derived from `time` | Optional explicit rotation count. Must be at least `1` when supplied. If omitted, runtime computes `((time / 20) / 8) * 2` using integer division. |
 
 ## Output rolls
 
@@ -86,15 +86,13 @@ Multiple output-roll entries can succeed during the same recipe completion. `cha
 
 ## Runtime notes
 
-The recipe matches only when `ingredient.test(input)` succeeds **and** the input stack's count is exactly equal to `inputAmount`.
-
-The current centrifuge completion code consumes one input item after a match, even though `inputAmount` participates in exact-count matching. This is a runtime behavior worth keeping in mind when authoring recipes with `inputAmount` other than `1`.
+The recipe matches only when `ingredient.test(input)` succeeds **and** the input stack's count is exactly equal to `inputAmount`. When the recipe completes, the centrifuge consumes `inputAmount` items from the input stack.
 
 Each successful output roll calls into its weighted pool to choose one result. Although an omitted `pool` codec-decodes to an empty weighted collection, an empty pool cannot provide a random result at runtime. Treat a non-empty pool as practically required for every output roll that can succeed.
 
 The current manual centrifuge uses `rotations` when supplied. Otherwise, rotations are derived from `time` with integer division. With the stock `time` default of `200`, the derived value is `2` rotations.
 
-`time`, `energyPerTick`, `inputAmount`, and `rotations` are all plain `Codec.INT` fields in the recipe codec; the configuration ranges on the default config values do not impose equivalent per-recipe validation ranges.
+`inputAmount`, `time`, `energyPerTick`, and an explicitly supplied `rotations` value use `ExtraCodecs.POSITIVE_INT`, so values below `1` are rejected by the recipe codec. `rotations` remains optional; when omitted, its value is derived from `time` at runtime.
 
 ## Ingredient codec scope
 
