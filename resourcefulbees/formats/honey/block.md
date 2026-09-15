@@ -2,7 +2,7 @@
 
 Serializer ID: `resourcefulbees:block/v1`
 
-This optional serializer controls the custom honey block's appearance and movement behavior, which existing block/item definitions it is based on, and optional beekeeper trade data.
+This optional serializer controls the custom honey block's appearance, movement behavior, and optional beekeeper trade data. The registered honey block and its block item are derived from the honey filename rather than configured by serializer fields.
 
 ## Fields
 
@@ -11,8 +11,6 @@ This optional serializer controls the custom honey block's appearance and moveme
 | `color` | ResourcefulLib color | No | `#ffffff` | Number, color string/special name, or RGBA object |
 | `jumpFactor` | number | No | `0.5` | No additional codec range supplied |
 | `speedFactor` | number | No | `0.4` | No additional codec range supplied |
-| `honeyBlockItem` | item identifier | No | `minecraft:honey_block` | Registered item ID |
-| `honeyBlock` | block identifier | No | `minecraft:honey_block` | Registered block ID |
 | `tradeData` | trade object | No | serializer-level `TradeData.DEFAULT` | See omitted-vs-explicit behavior below |
 
 ## Example
@@ -22,12 +20,12 @@ This optional serializer controls the custom honey block's appearance and moveme
   "resourcefulbees:block/v1": {
     "color": "#f6b83f",
     "jumpFactor": 0.5,
-    "speedFactor": 0.4,
-    "honeyBlockItem": "minecraft:honey_block",
-    "honeyBlock": "minecraft:honey_block"
+    "speedFactor": 0.4
   }
 }
 ```
+
+The honey identifier, registered honey block, and its block item are derived from the filename. There are no block or block-item identifier fields in `resourcefulbees:block/v1`.
 
 ## Serializer default vs explicit object
 
