@@ -18,12 +18,14 @@
     "itemOutputs": {
       "type": "array",
       "items": { "$ref": "#/$defs/itemOutputRoll" },
-      "default": []
+      "default": [],
+      "description": "Item output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored."
     },
     "fluidOutputs": {
       "type": "array",
       "items": { "$ref": "#/$defs/fluidOutputRoll" },
-      "default": []
+      "default": [],
+      "description": "Fluid output rolls. Runtime result generation evaluates only the first three entries; later entries are ignored."
     },
     "time": {
       "type": "integer",
