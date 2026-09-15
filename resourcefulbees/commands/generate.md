@@ -104,7 +104,7 @@ Level-3 generated trade files are written beneath:
 config/resourcefulbees/resources/data/resourcefulbees/villager_trade/beekeeper/3/
 ```
 
-The command considers tradable custom honey bottles, honey buckets, honey blocks, and honeycomb items. Their configured `tradeData` controls result count, optional secondary cost, max trades, XP, and price multiplier. The primary cost is Gold Flowers with a uniform amount from 8 through 16.
+The command considers tradable custom honey bottles, honey buckets, honey blocks, and honeycomb items. Their configured `tradeData` controls result count, optional secondary cost, max trades, XP, and reputation discount. The primary cost is Gold Flowers with a uniform amount from 8 through 16.
 
 The level-3 tag is written to:
 
