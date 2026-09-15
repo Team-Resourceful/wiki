@@ -43,6 +43,19 @@ site:
             directory: ./recipes
             language: en
     - type: section
+      key: section-commands
+      title: Commands
+      path: commands
+      children:
+        - type: space
+          key: space-commands
+          title: Command Reference
+          path: command-reference
+          default: true
+          content:
+            directory: ./commands
+            language: en
+    - type: section
       key: section-biome-modifiers
       title: Biome Modifiers
       path: biome-modifiers

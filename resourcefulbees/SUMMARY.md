@@ -33,6 +33,10 @@
   - [Flow Hive](recipes/flow-hive.md)
   - [Honey Generator](recipes/honey-generator.md)
   - [Fluid Ingredients and Fluid Stack Templates](recipes/fluid-ingredients.md)
+- [Commands](commands/README.md)
+  - [Generate Commands](commands/generate.md)
+  - [Template Commands](commands/template.md)
+  - [Beepedia Commands](commands/beepedia.md)
 - Biome Modifiers
   - [Holder Sets](biome-modifiers/holder-sets.md)
   - [Bee Spawns](biome-modifiers/bee-spawns.md)
