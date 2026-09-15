@@ -53,8 +53,8 @@ Schema reconstructed from `CentrifugeRecipe`, its item/fluid output codecs, Reso
 | `type` | string | Yes | `resourcefulbees:centrifuge` | Recipe serializer identifier. |
 | `ingredient` | Minecraft Ingredient | Yes | — | Item ingredient tested against the centrifuge input stack. Simple Resourceful Bees recipes use a direct item ID; Minecraft/NeoForge ingredient objects remain codec-driven. |
 | `inputAmount` | positive integer | No | `1` | Required stack count for the recipe match and the number of input items consumed when the recipe completes. Must be at least `1`. |
-| `itemOutputs` | array of item output rolls | No | `[]` | Independent item-output rolls. Up to the first `3` entries are evaluated when producing recipe results; later entries are ignored. |
-| `fluidOutputs` | array of fluid output rolls | No | `[]` | Independent fluid-output rolls. Up to the first `3` entries are evaluated when producing recipe results; later entries are ignored. |
+| `itemOutputs` | array of item output rolls | No | `[]` | Independent item-output rolls. Up to the first `3` entries are evaluated when producing recipe results; later entries are ignored. At least one of `itemOutputs` or `fluidOutputs` must be non-empty. |
+| `fluidOutputs` | array of fluid output rolls | No | `[]` | Independent fluid-output rolls. Up to the first `3` entries are evaluated when producing recipe results; later entries are ignored. At least one of `itemOutputs` or `fluidOutputs` must be non-empty. |
 | `time` | positive integer | No | configured default (`200` initially) | Recipe processing time. Must be at least `1`; the default comes from `CentrifugeConfig.defaultCentrifugeRecipeTime`. |
 | `energyPerTick` | positive integer | No | configured default (`10` initially) | Energy consumed per processing tick. Must be at least `1`; the default comes from `CentrifugeConfig.centrifugeRfPerTick`. |
 | `rotations` | positive integer | No | derived from `time` | Optional explicit rotation count. Must be at least `1` when supplied. If omitted, runtime computes `((time / 20) / 8) * 2` using integer division. |
@@ -67,6 +67,8 @@ Each entry in `itemOutputs` or `fluidOutputs` is an independent roll:
 | --- | --- | --- | --- | --- |
 | `chance` | number | No | `1.0` | Probability that this output roll occurs. Range `0.0` through `1.0`, inclusive. |
 | `pool` | array | No | `[]` | Weighted collection from which one result is selected when the roll succeeds. In practical recipes, provide at least one result. |
+
+`itemOutputs` and `fluidOutputs` are individually optional and each defaults to an empty list, but a centrifuge recipe cannot have both lists empty. The recipe validation safeguard throws an exception when both output lists are empty, so every recipe must define at least one item-output roll or at least one fluid-output roll.
 
 The centrifuge evaluates **at most three item-output rolls and three fluid-output rolls** when producing a recipe result. Only the first three entries of each top-level output list are considered; entries after index `2` do not participate in result generation. This matches the three item and three fluid output slots represented by the JEI centrifuge category.
 
@@ -89,6 +91,8 @@ Within those evaluated entries, multiple output rolls can succeed during the sam
 ## Runtime notes
 
 The recipe matches only when `ingredient.test(input)` succeeds **and** the input stack's count is exactly equal to `inputAmount`. When the recipe completes, the centrifuge consumes `inputAmount` items from the input stack.
+
+Although the two output fields are optional at the field level, a recipe with no item outputs and no fluid outputs is invalid. If both lists resolve to empty, recipe validation throws an exception instead of accepting a recipe that can never produce an output.
 
 When generating outputs, the item-output and fluid-output streams are each limited to their first three entries. Defining more than three entries in either list does not create additional results; the extra entries are ignored by result generation.
 
