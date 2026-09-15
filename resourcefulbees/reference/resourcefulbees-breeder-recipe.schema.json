@@ -12,7 +12,8 @@
     "parent2": { "$ref": "#/$defs/parentInput" },
     "optional": {
       "$ref": "#/$defs/ingredient",
-      "description": "Codec-optional additional-slot ingredient. Current runtime matching requires this ingredient to be present, non-empty, and matched."
+      "default": "resourcefulbees:bee_jar",
+      "description": "Optional additional-slot ingredient. When omitted, the codec defaults to the Resourceful Bees bee jar item ingredient."
     },
     "outputs": {
       "type": "array",
