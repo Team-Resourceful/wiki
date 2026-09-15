@@ -1,6 +1,6 @@
 # Breeder Recipe
 
-Breeder recipes use the `resourcefulbees:breeder` serializer to match two parent inputs, their feed items, an additional optional-slot ingredient, and a weighted collection of possible child outputs.
+Breeder recipes use the `resourcefulbees:breeder` serializer to match two parent inputs, their feed items, an additional ingredient slot, and a weighted collection of possible child outputs.
 
 ## Example
 
@@ -25,7 +25,6 @@ Breeder recipes use the `resourcefulbees:breeder` serializer to match two parent
     "feedAmount": 1,
     "feedItems": "minecraft:poppy"
   },
-  "optional": "resourcefulbees:bee_jar",
   "outputs": [
     {
       "child": {
@@ -57,7 +56,7 @@ Breeder recipes use the `resourcefulbees:breeder` serializer to match two parent
 | `type` | string | Yes | `resourcefulbees:breeder` | Recipe serializer identifier. |
 | `parent1` | ParentInput | Yes | — | First parent and its feed requirements. |
 | `parent2` | ParentInput | Yes | — | Second parent and its feed requirements. |
-| `optional` | Minecraft Ingredient | No | absent | Ingredient for the breeder's additional input slot. See the runtime caveat below. |
+| `optional` | Minecraft Ingredient | No | `resourcefulbees:bee_jar` | Ingredient matched against the breeder's additional input slot. When omitted, an empty Resourceful Bees bee jar is required. |
 | `outputs` | weighted array of ChildOutput | Yes | — | Possible child results. Selection is weighted by each entry's `weight`. |
 | `time` | integer | No | `2400` | Base processing time. Range `100` through `72000`, inclusive. |
 
@@ -88,11 +87,17 @@ Parent matching tests `parent` against the parent stack and `feedItems` against 
 
 A higher `weight` makes an output more likely relative to the other entries. `chance` is applied only after the weighted output has been selected. If that chance roll fails, no child is delivered and the successful-breed consumption transaction is not performed.
 
+## Optional ingredient
+
+`optional` is genuinely optional in the JSON. If it is omitted, the codec supplies `Ingredient.of(resourcefulbees:bee_jar)`, so the additional input slot must contain an empty Resourceful Bees bee jar. Authors only need to specify `optional` when the recipe should require a different ingredient.
+
+The resolved ingredient always participates in recipe matching. On a successful breed, one item is consumed from the additional input slot.
+
 ## Runtime notes
 
-The current `BreederRecipe.matches` implementation requires both parents and both feed ingredients to match. Although `optional` is codec-optional, the current match expression also requires it to be present, non-empty, and to match the breeder's additional input slot. In practice, a recipe that omits `optional` does not match. Generated Resourceful Bees breeder recipes use `"optional": "resourcefulbees:bee_jar"` for an empty jar used to receive the child.
+The current `BreederRecipe.matches` implementation requires both parents, both feed ingredients, and the resolved `optional` ingredient to match their respective input slots.
 
-On a successful output chance roll, the breeder consumes one item from the `optional` slot when `optional` is present, consumes `feedAmount` from each parent's feed slot, creates the selected `child`, and returns each parent's `returnItem` in a quantity equal to that parent's `feedAmount`.
+On a successful output chance roll, the breeder consumes one item from the additional input slot, consumes `feedAmount` from each parent's feed slot, creates the selected `child`, and returns each parent's `returnItem` in a quantity equal to that parent's `feedAmount`.
 
 The `outputs` field is required by the codec, but the weighted-collection codec itself does not establish a non-empty-list constraint here. Runtime processing calls `outputs.next()`, so recipes should provide at least one output.
 
