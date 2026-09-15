@@ -1,0 +1,43 @@
+{
+  "type": "resourcefulbees:breeder",
+  "parent1": {
+    "parent": {
+      "id": "resourcefulbees:iron_bee",
+      "neoforge:ingredient_type": "resourcefulbees:bee_jar"
+    },
+    "displayEntity": "resourcefulbees:iron_bee",
+    "feedAmount": 1,
+    "feedItems": "minecraft:poppy"
+  },
+  "parent2": {
+    "parent": {
+      "id": "resourcefulbees:gold_bee",
+      "neoforge:ingredient_type": "resourcefulbees:bee_jar"
+    },
+    "displayEntity": "resourcefulbees:gold_bee",
+    "feedAmount": 1,
+    "feedItems": "minecraft:poppy"
+  },
+  "optional": "resourcefulbees:bee_jar",
+  "outputs": [
+    {
+      "child": {
+        "id": "resourcefulbees:bee_jar",
+        "components": {
+          "resourcefulbees:jar_bee": {
+            "entity_type": "resourcefulbees:iron_bee",
+            "insertion_game_time": 0,
+            "display_name": {
+              "translate": "entity_type.resourcefulbees.iron_bee"
+            },
+            "color": -13159
+          }
+        }
+      },
+      "entity": "resourcefulbees:iron_bee",
+      "weight": 10.0,
+      "chance": 1.0
+    }
+  ],
+  "time": 2400
+}
