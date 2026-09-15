@@ -23,6 +23,8 @@
     - [Auras](formats/traits/auras.md)
 - Recipes
   - [Centrifuge](recipes/centrifuge.md)
+  - [Breeder](recipes/breeder.md)
+    - [Bee Jar Ingredient](recipes/bee-jar-ingredient.md)
   - [Mutation](recipes/mutation.md)
     - [Mutation Entries and Types](recipes/mutation-entry.md)
   - [Solidification](recipes/solidification.md)
