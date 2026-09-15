@@ -8,13 +8,17 @@ This site documents those formats, the supporting recipes and biome modifiers, a
 
 If you are creating your first custom bee, a good workflow is:
 
-1. **Create the bee definition first.** Start small and rely on defaults where they fit your design.
-2. **Add a honeycomb variation** if the bee should produce custom comb output.
-3. **Add reusable traits** if the bee needs special effects, immunities, particles, auras, or other trait behavior.
-4. **Add custom honey** if you want a reusable block, fluid, or bottled-honey definition.
-5. **Add recipes** for machine processing or other datapack-driven integrations.
-6. **Add biome modifiers** if the bee or its nest should participate in world generation or natural spawning.
-7. **Validate against the schemas/templates** and then test the content in-game.
+1. **Run Resourceful Bees once with default generation enabled.** This allows the mod to create its initial folders and default bee definitions.
+2. **Set `generateDefaults = false` in the Resourceful Bees config after that initial run.** This is important when you intend to override or customize the default bee variants; leaving default generation enabled can cause the mod's generated defaults to take precedence over or replace your customized default definitions.
+3. **Create or customize the bee definition.** Start small and rely on defaults where they fit your design.
+4. **Add a honeycomb variation** if the bee should produce custom comb output.
+5. **Add reusable traits** if the bee needs special effects, immunities, particles, auras, or other trait behavior.
+6. **Add custom honey** if you want a reusable block, fluid, or bottled-honey definition.
+7. **Add recipes** for machine processing or other datapack-driven integrations.
+8. **Add biome modifiers** if the bee or its nest should participate in world generation or natural spawning.
+9. **Validate against the schemas/templates** and then test the content in-game.
+
+> **Important:** After the first mod run, set `generateDefaults = false` before editing or replacing any of the generated default bee variants. Treat the generated defaults as a starting point: once you begin overriding them, disabling default generation prevents the mod from regenerating its stock definitions over your changes.
 
 Most customization is optional. The codecs provide defaults for many fields, so it is usually easier to begin with the smallest definition that expresses your idea and add complexity incrementally.
 
@@ -103,6 +107,8 @@ Choose a short, consistent name for the bee and for related content. Keep those 
 ### 2. Build the minimum bee
 
 Start from the Bee template/schema and add only the serializer sections you actually need. Many fields have useful defaults; omitting a field is often better than copying a value you do not intend to customize.
+
+If you are modifying one of Resourceful Bees' generated default variants, make sure `generateDefaults = false` before making your changes so the generated stock definition does not overwrite your customized version on a later launch.
 
 ### 3. Add production output
 
