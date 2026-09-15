@@ -52,35 +52,12 @@ MinMaxBounds.
 | Field | Type | Required | Default | Description |
 | --- | --- | --- | --- | --- |
 | `type` | enum | Yes | — | One of `resourcefulbees:spawns`, `resourcefulbees:dev_spawns`, or `resourcefulbees:supporter_spawns`. |
-| `whitelist` | biome holder set | Yes | — | Biomes in which this spawn may be added. Accepts a biome tag, a single biome ID, a list of biome IDs, or a custom NeoForge holder-set object. |
-| `blacklist` | biome holder set | No | `[]` | Biomes excluded from spawning. Accepts the same holder-set forms as `whitelist`; the default empty holder set excludes no biomes. |
+| `whitelist` | biome holder set | Yes | — | Biomes in which this spawn may be added. |
+| `blacklist` | biome holder set | No | `[]` | Biomes excluded from spawning. The default empty holder set excludes no biomes. |
 | `spawn` | spawn | Yes | — | Flattened weighted SpawnerData. Requires entity `type`, `minCount >= 1`, `maxCount >= 1`, and `weight >= 0`; runtime additionally requires `minCount <= maxCount`. |
 | `spawnPredicate` | locationPredicate | No | — | Optional Minecraft LocationPredicate restricting where the spawn may occur. |
 
-## Holder set forms
-
-`whitelist` and `blacklist` are each a single biome holder set. A holder set may be a biome tag:
-
-```json
-"whitelist": "#minecraft:is_overworld"
-```
-
-A single biome ID:
-
-```json
-"blacklist": "minecraft:deep_dark"
-```
-
-Or a compact list of biome IDs:
-
-```json
-"whitelist": [
-  "minecraft:plains",
-  "minecraft:forest"
-]
-```
-
-The array form is one holder set containing multiple individual biome holders; it is not a list of holder sets. Custom NeoForge holder-set dispatch objects are also accepted.
+`whitelist` and `blacklist` are each **one** biome holder set. See [Holder Sets](holder-sets.md) for the accepted single-ID, tag, compact-array, and NeoForge custom-object representations.
 
 ## Runtime notes
 

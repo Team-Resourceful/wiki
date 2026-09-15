@@ -1,10 +1,14 @@
 # Holder Sets
 
-Resourceful Bees biome modifiers use Minecraft/NeoForge holder-set codecs for biomes, structures, blocks, fluids, placed features, and—in recipe contexts—entities.
+Resourceful Bees uses Minecraft/NeoForge holder-set codecs anywhere a field needs to select entries from a registry. In the biome-modifier formats this includes biomes and placed features; the same holder-set concept may also appear with other registry types elsewhere in the mod.
+
+This page is the shared reference for holder-set JSON shapes. Individual biome-modifier pages document which fields use holder sets and any field-specific runtime behavior rather than repeating these forms.
 
 When `alwaysUseList` is false, the practical authoring forms are:
 
 ## Single registry entry
+
+Use one registry identifier to select one entry:
 
 ```json
 "minecraft:plains"
@@ -12,11 +16,15 @@ When `alwaysUseList` is false, the practical authoring forms are:
 
 ## Registry tag
 
+Prefix a registry tag with `#` to select the entries in that tag:
+
 ```json
 "#minecraft:is_overworld"
 ```
 
 ## Compact list
+
+An array represents **one holder set containing multiple individual registry entries**:
 
 ```json
 [
@@ -25,7 +33,7 @@ When `alwaysUseList` is false, the practical authoring forms are:
 ]
 ```
 
-An empty list is codec-valid, though it generally matches nothing.
+It is not a list of holder sets. An empty list is codec-valid, though it generally matches nothing.
 
 ## NeoForge custom holder set
 
@@ -39,9 +47,18 @@ NeoForge may dispatch custom holder-set implementations through an object with a
 
 The Resourceful Bees schemas keep these custom objects extensible because their fields depend on the registered holder-set type.
 
-## Important nesting distinction
+## Biome modifier fields
 
-`BeeBiomeModifier.whitelist` and `blacklist` are **lists of holder sets**, not just one holder set. Therefore:
+The current Resourceful Bees biome modifiers use these holder-set forms directly:
+
+| Modifier | Field | Registry |
+| --- | --- | --- |
+| Bee Spawn | `whitelist` | Biome |
+| Bee Spawn | `blacklist` | Biome |
+| Bee Nest | `biomes` | Biome |
+| Bee Nest | `features` | Placed Feature |
+
+Each field in this table is **one holder set**. For example, a bee-spawn whitelist containing plains and forest is:
 
 ```json
 "whitelist": [
@@ -50,16 +67,4 @@ The Resourceful Bees schemas keep these custom objects extensible because their 
 ]
 ```
 
-is two holder sets, each containing one biome, while:
-
-```json
-"whitelist": [
-  ["minecraft:plains", "minecraft:forest"]
-]
-```
-
-is one holder set containing two biomes.
-
-For simple membership tests the runtime result may be equivalent, but the serialized structures are different.
-
-`BeeNestBiomeModifier.biomes` and `features`, by contrast, are each a **single holder set**.
+See [Bee Spawns](bee-spawns.md) and [Bee Nests](bee-nests.md) for the required/default status and runtime semantics of those fields.
