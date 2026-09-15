@@ -1,11 +1,7 @@
 {
   "type": "resourcefulbees:spawns",
-  "whitelist": [
-    "#minecraft:is_overworld"
-  ],
-  "blacklist": [
-    "minecraft:deep_dark"
-  ],
+  "whitelist": "#minecraft:is_overworld",
+  "blacklist": "minecraft:deep_dark",
   "spawn": {
     "type": "resourcefulbees:ruby_bee",
     "minCount": 1,
