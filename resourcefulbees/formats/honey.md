@@ -4,7 +4,7 @@ JSON reference for Resourceful Bees.
 
 ## Example
 
-``` json
+```json
 {
   "resourcefulbees:block/v1": {
     "color": "#ffffff",
@@ -106,11 +106,11 @@ JSON reference for Resourceful Bees.
 
 ## Fields
 
-  Field                         Type         Required   Default   Description
-  ----------------------------- ------------ ---------- --------- -------------
-  `resourcefulbees:block/v1`    blockData    No         ---       ---
-  `resourcefulbees:fluid/v1`    fluidData    No         ---       ---
-  `resourcefulbees:bottle/v1`   bottleData   Yes        ---       ---
+| Field | Type | Required | Default | Description |
+| --- | --- | --- | --- | --- |
+| `resourcefulbees:block/v1` | blockData | No | --- | Block serializer data. |
+| `resourcefulbees:fluid/v1` | fluidData | No | --- | Fluid serializer data. |
+| `resourcefulbees:bottle/v1` | bottleData | Yes | --- | Bottle serializer data. |
 
 ## Runtime notes
 
@@ -126,8 +126,8 @@ An explicit empty rendering object is not valid because
 The source files used for this page are included in the `reference/`
 directory:
 
--   `resourcefulbees-honey-template.json`
--   `resourcefulbees-honey.schema.json`
+- `resourcefulbees-honey-template.json`
+- `resourcefulbees-honey.schema.json`
 
 > The schema is the machine-readable reference. Runtime notes document
 > codec or game behavior that JSON Schema cannot fully express.
