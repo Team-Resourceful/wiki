@@ -1,6 +1,8 @@
 # Recipes
 
 - [Centrifuge](centrifuge.md)
+- [Breeder](breeder.md)
+  - [Bee Jar Ingredient](bee-jar-ingredient.md)
 - [Mutation](mutation.md)
   - [Mutation Entries and Types](mutation-entry.md)
 - [Solidification](solidification.md)
