@@ -23,27 +23,59 @@
     }
   },
   "resourcefulbees:rendering/v1": {
-    "layers": [{"color":"#ffffff","texture":"example_bee","layerEffect":"NONE","isPollen":false}],
-    "colors": {"spawnEgg":"#ffffff","jarColor":"#ffffff"},
+    "layers": [
+      {
+        "color": "#ffffff",
+        "texture": "example_bee",
+        "layerEffect": "NONE",
+        "isPollen": false
+      }
+    ],
+    "colors": {
+      "spawnEgg": "#ffffff",
+      "jarColor": "#ffffff"
+    },
     "model": "resourcefulbees:base",
     "texture": "example_bee",
     "animation": "resourcefulbees:bee",
     "sizeModifier": 1.0
   },
-  "resourcefulbees:mutation/v1": {"count":10,"mutation":"resourcefulbees:some_mutation"},
+  "resourcefulbees:mutation/v1": {
+    "count": 10,
+    "mutation": "resourcefulbees:some_mutation"
+  },
   "resourcefulbees:breeding/v1": {
-    "families": [{"weight":10.0,"chance":1.0,"parent1":"resourcefulbees:parent_bee_1","parent2":"resourcefulbees:parent_bee_2"}],
+    "families": [
+      {
+        "weight": 10.0,
+        "chance": 1.0,
+        "parent1": "resourcefulbees:parent_bee_1",
+        "parent2": "resourcefulbees:parent_bee_2"
+      }
+    ],
     "feedItems": "minecraft:poppy",
-    "feedReturnItem": {"id":"minecraft:bucket","count":1},
+    "feedReturnItem": {
+      "id": "minecraft:bucket",
+      "count": 1
+    },
     "feedAmount": 1,
     "childGrowthDelay": -24000,
     "breedDelay": 6000
   },
-  "resourcefulbees:trait/v1": {"auraRange":10,"traits":[]},
+  "resourcefulbees:trait/v1": {
+    "auraRange": 10,
+    "traits": []
+  },
   "resourcefulbees:trade/v1": {
-    "amount": {"min":1,"max":99},
+    "amount": {
+      "min": 1,
+      "max": 99
+    },
     "secondaryItem": "minecraft:air",
-    "secondaryItemCost": {"min":1,"max":99},
+    "secondaryItemCost": {
+      "min": 1,
+      "max": 99
+    },
     "reputationDiscount": 0.05,
     "maxTrades": 8,
     "xp": 3
