@@ -28,7 +28,9 @@
         "color": "#ffffff",
         "texture": "example_bee",
         "layerEffect": "NONE",
-        "isPollen": false
+        "isPollen": false,
+        "pulseFrequency": 20.0,
+        "bone": "body"
       }
     ],
     "colors": {

@@ -2,19 +2,18 @@
 
 Serializer ID: `resourcefulbees:rendering/v1`
 
-The rendering serializer controls the bee's model, base texture, animation, size, layered textures, colors, and pulse behavior.
+The rendering serializer controls the bee's model, base texture, animation, size, layered textures, and colors.
 
 ## Fields
 
 | Field | Type | Required | Default | Range / accepted forms |
 | --- | --- | --- | --- | --- |
-| `layers` | array of layer objects | No | `[]` | Each layer may define color, texture, effect, and pollen behavior. |
+| `layers` | array of layer objects | No | `[]` | Decoded as a linked set; each layer may define color, texture, effect, pollen behavior, pulse frequency, and a target bone. |
 | `colors` | color-data object | No | all white | Spawn egg and jar colors. |
 | `model` | resource identifier | No | `resourcefulbees:base` | Registered/model resource ID. |
-| `texture` | layer texture string | No | omitted | Short texture name expanded by Resourceful Bees. |
+| `texture` | layer texture string | No | missing texture | Short texture name expanded by Resourceful Bees. |
 | `animation` | resource identifier | No | `resourcefulbees:bee` | Animation resource ID. |
-| `sizeModifier` | number | No | `1.0` | `0.5` through `2.0`. |
-| `pulseFrequency` | number | No | special omitted default `0.0` | If explicitly present: `5.0` through `100.0`. |
+| `sizeModifier` | float | No | `1.0` | `0.5` through `2.0`, inclusive. |
 
 ## Example
 
@@ -26,7 +25,14 @@ The rendering serializer controls the bee's model, base texture, animation, size
         "color": "#ffffff",
         "texture": "ruby_bee",
         "layerEffect": "GLOW",
-        "isPollen": false
+        "isPollen": false,
+        "pulseFrequency": 20.0,
+        "bone": "body"
+      },
+      {
+        "texture": "ruby_crystals",
+        "layerEffect": "ENCHANTED",
+        "bone": "crystals"
       }
     ],
     "colors": {
@@ -43,16 +49,34 @@ The rendering serializer controls the bee's model, base texture, animation, size
 
 ## Layer objects
 
-Each layer accepts:
+Each entry in `layers` uses the `LayerData` codec:
 
-| Field | Type | Required | Default |
-| --- | --- | --- | --- |
-| `color` | ResourcefulLib color | No | `#ffffff` |
-| `texture` | short texture string | No | omitted |
-| `layerEffect` | enum name or ordinal | No | `NONE` |
-| `isPollen` | boolean | No | `false` |
+| Field | Type | Required | Default | Range / behavior |
+| --- | --- | --- | --- | --- |
+| `color` | ResourcefulLib color | No | white | Tint applied to the layer. |
+| `texture` | layer texture string | No | missing texture | Texture used by the layer. |
+| `layerEffect` | enum name or ordinal | No | `NONE` | `NONE`, `ENCHANTED`, or `GLOW`. |
+| `isPollen` | boolean | No | `false` | Marks the layer as a pollen layer. |
+| `pulseFrequency` | float | No | `0.0` | Explicit values must be `5.0` through `100.0`, inclusive. |
+| `bone` | string | No | `"body"` | Bone targeted by effects that operate on a specific model bone. Currently used by `ENCHANTED`. |
 
-`layerEffect` accepts the names `NONE`, `ENCHANTED`, `GLOW`, and `TRANSLUCENT` case-insensitively. Numeric ordinals `0` through `3` are also accepted by the enum codec.
+`layerEffect` is backed by the `LayerEffect` enum. The current enum values are `NONE`, `ENCHANTED`, and `GLOW`. `EnumCodec` also accepts the enum's numeric representation.
+
+### Enchanted bone targeting
+
+For `ENCHANTED` layers, `bone` selects the model bone that receives the enchantment glint effect. It defaults to `"body"` when omitted.
+
+This is useful when only part of a bee should glint. Crystal bees such as diamond, emerald, lapis, and redstone can target their `crystals` bone so the glint is applied to the crystals rather than the entire bee:
+
+```json
+{
+  "texture": "diamond_crystals",
+  "layerEffect": "ENCHANTED",
+  "bone": "crystals"
+}
+```
+
+The value is a model bone name, not a resource identifier. It therefore needs to match a bone defined by the selected model.
 
 ## Texture strings
 
@@ -81,8 +105,13 @@ ResourcefulLib colors accept numbers, strings such as `#ffffff`, registered spec
 }
 ```
 
-The color-data object controls spawn-egg and jar coloring. Use the JSON Schema in `reference/bee.schema.json` as the authoritative shape for the current version.
+The `colors` object contains:
+
+| Field | Type | Required | Default |
+| --- | --- | --- | --- |
+| `spawnEgg` | ResourcefulLib color | No | white |
+| `jarColor` | ResourcefulLib color | No | white |
 
 ## `pulseFrequency` caveat
 
-This field has intentionally unusual codec behavior. Omitting it produces the codec's special default value `0.0`. If it is explicitly present, the accepted range is `5.0` to `100.0`. Therefore `"pulseFrequency": 0` is not equivalent to omitting the field and is rejected by the explicit-value codec.
+`pulseFrequency` belongs to each layer, not to the top-level rendering serializer. Omitting it resolves to `0.0`. Because an explicitly supplied value is decoded with `Codec.floatRange(5f, 100f)`, explicit values must be between `5.0` and `100.0`. Therefore `"pulseFrequency": 0` is rejected even though omission produces the default value `0.0`.
